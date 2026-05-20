@@ -1,0 +1,28 @@
+{
+  "$schema": "https://raw.githubusercontent.com/anthropics/claude-code/main/schemas/marketplace.schema.json",
+  "name": "duolakit",
+  "owner": {
+    "name": "duola",
+    "email": "noreply@duolakit.pages.dev",
+    "url": "https://x.com/hunterweb303"
+  },
+  "metadata": {
+    "description": "Independent tools for Claude Code power users — real workflows, not framework wrappers.",
+    "version": "0.1.0",
+    "homepage": "https://duolakit.pages.dev"
+  },
+  "plugins": [
+    {
+      "name": "hello",
+      "source": "./00-hello",
+      "description": "Sanity check plugin — verifies the install pipeline works. Says hello back.",
+      "version": "0.1.0",
+      "author": {
+        "name": "duola",
+        "url": "https://x.com/hunterweb303"
+      },
+      "homepage": "https://duolakit.pages.dev",
+      "keywords": ["test", "sanity-check", "hello-world"]
+    }
+  ]
+}

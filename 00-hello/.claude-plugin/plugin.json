@@ -1,0 +1,12 @@
+{
+  "name": "hello",
+  "version": "0.1.0",
+  "description": "Sanity check plugin for duolakit — verifies the install pipeline works. Says hello back when you run /duolakit-hello.",
+  "author": {
+    "name": "duola",
+    "url": "https://x.com/hunterweb303"
+  },
+  "license": "MIT",
+  "homepage": "https://duolakit.pages.dev",
+  "keywords": ["test", "sanity-check", "hello-world"]
+}

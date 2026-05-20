@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>duolakit · Independent tools for Claude Code power users</title>
+  <meta name="description" content="A matrix of independent, opinionated plugins for Claude Code. MIT core, optional Pro for advanced features.">
+  <meta property="og:title" content="duolakit · Claude Code workflow plugins">
+  <meta property="og:description" content="Real workflows, not framework wrappers. Independent open-source plugins.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --grad-start: #6366F1;
+      --grad-end: #EC4899;
+      --grad-start-bright: #818CF8;
+      --grad-end-bright: #F472B6;
+      --ink: #f4f7fb;
+      --muted: #9aa5c3;
+      --line: rgba(173, 188, 255, 0.16);
+      --surface: rgba(11, 15, 31, 0.7);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      font-family: 'Inter', -apple-system, system-ui, sans-serif;
+      background:
+        radial-gradient(circle at 15% 8%, rgba(99, 102, 241, 0.22), transparent 32%),
+        radial-gradient(circle at 85% 12%, rgba(236, 72, 153, 0.18), transparent 28%),
+        linear-gradient(180deg, #090b14 0%, #0d1020 46%, #0a0d18 100%);
+      background-attachment: fixed;
+      color: var(--ink);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+    .container { max-width: 1100px; margin: 0 auto; padding: 24px; }
+    nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 0;
+    }
+    .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .brand-mark {
+      font-size: 1.6rem; font-weight: 900; line-height: 1;
+      background: linear-gradient(120deg, var(--grad-start-bright), var(--grad-end-bright));
+      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .brand-name {
+      font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 1.1rem; color: var(--ink);
+    }
+    .nav-links { display: flex; gap: 24px; }
+    .nav-links a {
+      color: var(--muted); text-decoration: none; font-size: 0.9rem; transition: color 0.15s;
+    }
+    .nav-links a:hover { color: var(--ink); }
+
+    .hero {
+      padding: 60px 0 40px;
+      text-align: center;
+    }
+    .hero-badges {
+      display: flex; flex-wrap: wrap; gap: 8px; justify-content: center;
+      margin-bottom: 24px;
+    }
+    .badge {
+      display: inline-block; padding: 4px 12px; border-radius: 999px;
+      font-family: 'JetBrains Mono', monospace; font-size: 0.72rem;
+      font-weight: 600; letter-spacing: 0.02em; text-transform: uppercase;
+      border: 1px solid;
+    }
+    .badge.b1 { color: #818CF8; background: rgba(99,102,241,0.1); border-color: rgba(99,102,241,0.25); }
+    .badge.b2 { color: #F472B6; background: rgba(236,72,153,0.1); border-color: rgba(236,72,153,0.25); }
+    .badge.b3 { color: #4ade80; background: rgba(34,197,94,0.1); border-color: rgba(34,197,94,0.25); }
+    .badge.b4 { color: #fbbf24; background: rgba(251,191,36,0.1); border-color: rgba(251,191,36,0.25); }
+
+    h1 {
+      font-size: clamp(2.4rem, 6vw, 4.4rem);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      margin-bottom: 20px;
+      background: linear-gradient(120deg, #f8fbff 0%, #b2beff 42%, #ff95c7 100%);
+      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .tagline {
+      font-size: 1.15rem; color: var(--muted); max-width: 640px; margin: 0 auto 32px;
+    }
+    .hero-actions {
+      display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 12px 22px; border-radius: 10px;
+      font-weight: 600; font-size: 0.95rem; text-decoration: none;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .btn-primary {
+      background: linear-gradient(90deg, var(--grad-start), var(--grad-end));
+      color: #fff; box-shadow: 0 12px 32px rgba(99,102,241,0.3);
+    }
+    .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 16px 40px rgba(99,102,241,0.45); }
+    .btn-secondary {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.14);
+      color: var(--ink);
+      backdrop-filter: blur(8px);
+    }
+    .btn-secondary:hover { background: rgba(255,255,255,0.08); }
+
+    .install-block {
+      max-width: 640px; margin: 32px auto 0;
+      padding: 20px 24px; border-radius: 12px;
+      background: rgba(7, 10, 20, 0.6);
+      border: 1px solid var(--line);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.88rem; line-height: 1.7;
+      text-align: left;
+    }
+    .install-block .comment { color: #5b6370; }
+    .install-block .cmd { color: #b7c5ff; }
+
+    section { padding: 60px 0; }
+    .section-head {
+      text-align: center; margin-bottom: 40px;
+    }
+    .section-head h2 {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 800; margin-bottom: 8px; letter-spacing: -0.01em;
+    }
+    .section-head p { color: var(--muted); }
+
+    .plugins-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .plugin-card {
+      padding: 24px; border-radius: 14px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      backdrop-filter: blur(12px);
+      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+    }
+    .plugin-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(129, 140, 248, 0.4);
+      box-shadow: 0 16px 36px rgba(99,102,241,0.18);
+    }
+    .plugin-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700; font-size: 0.78rem;
+      color: var(--muted); margin-bottom: 8px;
+    }
+    .plugin-card h3 {
+      font-size: 1.2rem; font-weight: 700; margin-bottom: 8px;
+    }
+    .plugin-card .status {
+      display: inline-block; padding: 2px 10px; border-radius: 999px;
+      font-family: 'JetBrains Mono', monospace; font-size: 0.7rem;
+      font-weight: 600; margin-bottom: 12px;
+    }
+    .status.live { background: rgba(34,197,94,0.15); color: #4ade80; }
+    .status.building { background: rgba(251,191,36,0.15); color: #fbbf24; }
+    .status.planned { background: rgba(173,188,255,0.12); color: #b7c5ff; }
+    .plugin-card p {
+      color: var(--muted); font-size: 0.92rem; margin-bottom: 16px;
+    }
+    .plugin-card .price {
+      font-family: 'JetBrains Mono', monospace; font-weight: 700;
+      font-size: 0.9rem; color: var(--grad-end-bright);
+    }
+    .plugin-card .price .free { color: #4ade80; }
+
+    .standards {
+      max-width: 720px; margin: 0 auto;
+      padding: 32px; border-radius: 16px;
+      background: linear-gradient(135deg, rgba(99,102,241,0.08), rgba(236,72,153,0.06));
+      border: 1px solid var(--line);
+    }
+    .standards ul { list-style: none; }
+    .standards li {
+      padding: 8px 0; padding-left: 28px;
+      position: relative; color: var(--ink);
+    }
+    .standards li::before {
+      content: '✓';
+      position: absolute; left: 0;
+      color: #4ade80; font-weight: 700;
+    }
+
+    .community-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px; max-width: 800px; margin: 0 auto;
+    }
+    .community-card {
+      display: block; padding: 24px; border-radius: 14px;
+      background: var(--surface); border: 1px solid var(--line);
+      text-decoration: none; color: var(--ink);
+      text-align: center; transition: transform 0.2s, border-color 0.2s;
+    }
+    .community-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(129, 140, 248, 0.4);
+    }
+    .community-icon { font-size: 1.8rem; margin-bottom: 8px; }
+    .community-name { font-weight: 700; margin-bottom: 4px; }
+    .community-handle {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem; color: var(--muted);
+    }
+
+    footer {
+      padding: 40px 0 60px; text-align: center;
+      color: var(--muted); font-size: 0.85rem;
+      border-top: 1px solid var(--line); margin-top: 40px;
+    }
+    footer a { color: var(--ink); text-decoration: none; }
+    footer a:hover { color: var(--grad-end-bright); }
+
+    @media (max-width: 640px) {
+      nav { flex-direction: column; gap: 12px; }
+      .nav-links { gap: 16px; font-size: 0.85rem; }
+      h1 { font-size: 2.4rem; }
+      .hero { padding: 40px 0 30px; }
+      section { padding: 40px 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <nav>
+      <a href="#" class="brand">
+        <span class="brand-mark">∞</span>
+        <span class="brand-name">duolakit</span>
+      </a>
+      <div class="nav-links">
+        <a href="#plugins">Plugins</a>
+        <a href="#standards">Standards</a>
+        <a href="https://github.com/duolaAmengweb3/duolakit" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://x.com/hunterweb303" target="_blank" rel="noopener">X</a>
+      </div>
+    </nav>
+
+    <header class="hero">
+      <div class="hero-badges">
+        <span class="badge b1">Claude Code marketplace</span>
+        <span class="badge b2">MIT core</span>
+        <span class="badge b3">Independent</span>
+        <span class="badge b4">No framework wrap</span>
+      </div>
+      <h1>Tools for Claude Code<br>power users.</h1>
+      <p class="tagline">
+        A curated matrix of opinionated plugins for real workflows —
+        schema sync, token budgets, PRD breakdown, and more.
+        Each one production-grade, not a GitHub repo dump.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#plugins">See plugins ↓</a>
+        <a class="btn btn-secondary" href="https://github.com/duolaAmengweb3/duolakit" target="_blank" rel="noopener">GitHub</a>
+      </div>
+      <div class="install-block">
+<span class="comment"># In Claude Code, add the marketplace once:</span>
+<span class="cmd">/plugin marketplace add duolaAmengweb3/duolakit</span>
+
+<span class="comment"># Then install whatever you need:</span>
+<span class="cmd">/plugin install hello@duolakit</span>
+<span class="cmd">/plugin install openapi-guardian@duolakit</span>  <span class="comment"># coming soon</span>
+      </div>
+    </header>
+
+    <section id="plugins">
+      <div class="section-head">
+        <h2>The matrix</h2>
+        <p>Numbered, versioned, independently maintained.</p>
+      </div>
+      <div class="plugins-grid">
+        <div class="plugin-card">
+          <div class="plugin-num">00</div>
+          <h3>hello</h3>
+          <span class="status live">Live</span>
+          <p>Sanity-check plugin. Says hello back when you run <code>/duolakit-hello</code>. Use this to verify the install pipeline works end-to-end before installing the real ones.</p>
+          <div class="price"><span class="free">Free · MIT</span></div>
+        </div>
+
+        <div class="plugin-card">
+          <div class="plugin-num">01</div>
+          <h3>openapi-guardian</h3>
+          <span class="status building">Building</span>
+          <p>Auto-sync OpenAPI spec ↔ route handlers ↔ TypeScript types ↔ SDK clients. Change one place, four others update. No more schema drift bugs at 11pm.</p>
+          <div class="price">Free · <span style="color:var(--grad-end-bright)">Pro $19</span></div>
+        </div>
+
+        <div class="plugin-card">
+          <div class="plugin-num">02</div>
+          <h3>token-guardian</h3>
+          <span class="status planned">Planned</span>
+          <p>Real-time monitoring of your Claude Code token budget. Alerts before you hit the 5h limit. Auto-fallback to OpenRouter / DeepSeek / GLM when the window runs out.</p>
+          <div class="price">Free · <span style="color:var(--grad-end-bright)">Pro $9</span></div>
+        </div>
+
+        <div class="plugin-card">
+          <div class="plugin-num">03</div>
+          <h3>prd-splitter</h3>
+          <span class="status planned">Planned</span>
+          <p>Feed it a PRD (Markdown / Confluence). It splits into epic → story → task, estimates Fibonacci points, drops into Linear / Jira with acceptance criteria attached.</p>
+          <div class="price">Free · <span style="color:var(--grad-end-bright)">Pro $19</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="standards">
+      <div class="section-head">
+        <h2>What "production-grade" means here</h2>
+        <p>Out of 9,000+ Claude Code plugins, ~100 are production-ready. duolakit aims to be in that 100.</p>
+      </div>
+      <div class="standards">
+        <ul>
+          <li>Unit tests + a 30-second demo video, every plugin</li>
+          <li>Bilingual README (中文 + English)</li>
+          <li>Free MIT core forever — no rug-pull to paid</li>
+          <li>Clear Pro license boundary, separately listed</li>
+          <li>Monthly release cadence; issues answered within 30 days</li>
+          <li>One author, one brand — accountability not committee</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <h2>Community</h2>
+        <p>Building in public. Yell at me with feedback.</p>
+      </div>
+      <div class="community-grid">
+        <a class="community-card" href="https://github.com/duolaAmengweb3/duolakit" target="_blank" rel="noopener">
+          <div class="community-icon">⭐</div>
+          <div class="community-name">GitHub</div>
+          <div class="community-handle">duolaAmengweb3/duolakit</div>
+        </a>
+        <a class="community-card" href="https://x.com/hunterweb303" target="_blank" rel="noopener">
+          <div class="community-icon">𝕏</div>
+          <div class="community-name">X / Twitter</div>
+          <div class="community-handle">@hunterweb303</div>
+        </a>
+        <a class="community-card" href="https://t.me/dsa885" target="_blank" rel="noopener">
+          <div class="community-icon">✈</div>
+          <div class="community-name">Telegram</div>
+          <div class="community-handle">t.me/dsa885</div>
+        </a>
+      </div>
+    </section>
+
+    <footer>
+      built by <strong><a href="https://x.com/hunterweb303" target="_blank" rel="noopener">duola · @hunterweb303</a></strong>
+      ·
+      same author as <a href="https://mimo-tui.pages.dev" target="_blank" rel="noopener">mimo-tui</a>
+      ·
+      © 2026 · MIT
+    </footer>
+  </div>
+</body>
+</html>
