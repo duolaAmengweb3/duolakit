@@ -23,6 +23,18 @@
       },
       "homepage": "https://duolakit.pages.dev",
       "keywords": ["test", "sanity-check", "hello-world"]
+    },
+    {
+      "name": "openapi-guardian",
+      "source": "./01-openapi-guardian",
+      "description": "Auto-sync OpenAPI spec ↔ route handlers ↔ TypeScript types ↔ SDK clients. Change one place, four others update.",
+      "version": "0.1.0",
+      "author": {
+        "name": "duola",
+        "url": "https://x.com/hunterweb303"
+      },
+      "homepage": "https://duolakit.pages.dev",
+      "keywords": ["openapi", "swagger", "schema", "typescript", "rest", "api", "drift", "sync", "express"]
     }
   ]
 }
