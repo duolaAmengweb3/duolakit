@@ -1,0 +1,14 @@
+{
+  "PreToolUse": [
+    {
+      "matcher": "*",
+      "description": "Log every tool call to ~/.duolakit/token-log.jsonl for budget estimation. Silent on failure.",
+      "hooks": [
+        {
+          "type": "command",
+          "command": "bash ${CLAUDE_PLUGIN_ROOT}/hooks/log-tool.sh"
+        }
+      ]
+    }
+  ]
+}

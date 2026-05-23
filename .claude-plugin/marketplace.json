@@ -35,6 +35,18 @@
       },
       "homepage": "https://duolakit.pages.dev",
       "keywords": ["openapi", "swagger", "schema", "typescript", "rest", "api", "drift", "sync", "express"]
+    },
+    {
+      "name": "token-guardian",
+      "source": "./02-token-guardian",
+      "description": "Heuristic budget guard — track Claude Code activity, get warned ~30 min before you hit your 5h window, optionally route to OpenRouter when exhausted.",
+      "version": "1.0.0",
+      "author": {
+        "name": "duola",
+        "url": "https://x.com/hunterweb303"
+      },
+      "homepage": "https://duolakit.pages.dev",
+      "keywords": ["claude-code", "token", "budget", "cost", "monitoring", "openrouter", "fallback", "rate-limit"]
     }
   ]
 }
