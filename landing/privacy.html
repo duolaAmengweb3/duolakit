@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy · duolakit</title>
+  <meta name="description" content="Privacy policy for the duolakit marketplace and its Claude Code plugins (openapi-guardian, token-guardian, prd-splitter).">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --grad-start-bright: #818CF8;
+      --grad-end-bright: #F472B6;
+      --ink: #f4f7fb;
+      --muted: #9aa5c3;
+      --line: rgba(173, 188, 255, 0.16);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      font-family: 'Inter', -apple-system, system-ui, sans-serif;
+      background:
+        radial-gradient(circle at 15% 8%, rgba(99, 102, 241, 0.18), transparent 32%),
+        radial-gradient(circle at 85% 12%, rgba(236, 72, 153, 0.14), transparent 28%),
+        linear-gradient(180deg, #090b14 0%, #0d1020 46%, #0a0d18 100%);
+      background-attachment: fixed;
+      color: var(--ink);
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+    .container { max-width: 760px; margin: 0 auto; padding: 32px 24px 80px; }
+    nav { padding: 20px 0; margin-bottom: 24px; }
+    .brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; }
+    .brand-mark {
+      font-size: 1.6rem; font-weight: 900; line-height: 1;
+      background: linear-gradient(120deg, var(--grad-start-bright), var(--grad-end-bright));
+      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .brand-name {
+      font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 1.1rem; color: var(--ink);
+    }
+    .back-link {
+      display: inline-block; margin-bottom: 24px; color: var(--muted);
+      text-decoration: none; font-size: 0.9rem;
+    }
+    .back-link:hover { color: var(--ink); }
+    h1 {
+      font-size: 2.2rem; font-weight: 800; margin-bottom: 8px;
+      letter-spacing: -0.02em;
+    }
+    .meta {
+      color: var(--muted); font-size: 0.9rem; margin-bottom: 36px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    h2 {
+      font-size: 1.3rem; font-weight: 700; margin: 36px 0 12px;
+      color: var(--ink);
+      border-top: 1px solid var(--line); padding-top: 28px;
+    }
+    h2:first-of-type { border-top: none; padding-top: 0; }
+    p { margin-bottom: 12px; color: #d8def0; }
+    ul { margin-left: 20px; margin-bottom: 12px; color: #d8def0; }
+    li { margin-bottom: 6px; }
+    code, .mono {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85em;
+      background: rgba(255,255,255,0.06);
+      padding: 1px 6px; border-radius: 4px;
+      color: #d6e2ff;
+    }
+    a { color: var(--grad-end-bright); }
+    a:hover { color: var(--grad-start-bright); }
+    .note {
+      background: rgba(99,102,241,0.08); border: 1px solid var(--line);
+      border-radius: 10px; padding: 16px 18px; margin: 18px 0;
+      font-size: 0.94rem;
+    }
+    footer {
+      margin-top: 60px; padding-top: 28px; border-top: 1px solid var(--line);
+      color: var(--muted); font-size: 0.85rem;
+    }
+    footer a { color: var(--ink); text-decoration: none; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <nav>
+      <a href="/" class="brand">
+        <span class="brand-mark">∞</span>
+        <span class="brand-name">duolakit</span>
+      </a>
+    </nav>
+
+    <a href="/" class="back-link">← Back to duolakit</a>
+
+    <h1>Privacy Policy</h1>
+    <p class="meta">Effective 2026-05-23 · covers all duolakit plugins and the duolakit-license verification service.</p>
+
+    <h2>The short version</h2>
+    <p>
+      duolakit plugins run entirely inside your Claude Code session on your own machine.
+      We do not collect telemetry, usage analytics, prompts, source code, or any other
+      content you process with the plugins.
+    </p>
+    <p>
+      The only data we store is the email address Pro buyers give us at purchase, used
+      to verify Pro activation. That's it.
+    </p>
+
+    <h2>What plugin data leaves your machine</h2>
+    <p><strong>Free tier plugins (openapi-guardian, token-guardian, prd-splitter):</strong></p>
+    <ul>
+      <li><strong>Nothing.</strong> All processing happens locally in your Claude Code session.</li>
+      <li><code>token-guardian</code> writes a local activity log to <code>~/.duolakit/token-log.jsonl</code> — never transmitted.</li>
+    </ul>
+
+    <p><strong>Pro tier activation only:</strong></p>
+    <ul>
+      <li>When you run <code>/openapi-activate</code> / <code>/token-activate</code> / <code>/prd-activate</code>, the plugin sends your email + the plugin name to
+        <code>duolakit-license.hxu92521.workers.dev/verify</code> over HTTPS.</li>
+      <li>The server returns <code>{ valid: true | false }</code>. No data about your session, your code, or your usage is sent.</li>
+      <li>The verification response is cached locally in <code>~/.duolakit/licenses.json</code> so subsequent <code>check</code> calls are offline.</li>
+    </ul>
+
+    <p><strong>Pro tier <code>/prd-push linear</code> command (prd-splitter only):</strong></p>
+    <ul>
+      <li>If you opt in by setting <code>LINEAR_API_KEY</code> and running the command, the plugin calls Linear's GraphQL API directly from your machine to create issues.</li>
+      <li>Your Linear API key is read from environment each call and <strong>never written to disk</strong>.</li>
+      <li>duolakit infrastructure does not see, log, or proxy this traffic.</li>
+    </ul>
+
+    <h2>Data we store on the license verification server</h2>
+    <p>
+      For Pro buyers, the duolakit-license Cloudflare Worker stores one record per
+      purchase in Cloudflare KV:
+    </p>
+    <ul>
+      <li><strong>Email address</strong> you provided at purchase.</li>
+      <li><strong>Plugin name</strong> the purchase grants access to.</li>
+      <li><strong>Purchase timestamp</strong> (ISO date).</li>
+      <li><strong>Sale ID</strong> (an internal reference; informational only).</li>
+    </ul>
+    <p>
+      We do <strong>not</strong> store IP addresses, payment method details (those are
+      negotiated and handled directly between you and the operator over DM, never
+      touching this server), browser fingerprints, or any usage data.
+    </p>
+
+    <div class="note">
+      <strong>Note:</strong> the Cloudflare KV record is shared with Cloudflare in the
+      ordinary course of running the service. Cloudflare's privacy policy applies to
+      that storage layer: <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">cloudflare.com/privacypolicy</a>.
+    </div>
+
+    <h2>Deletion and refund</h2>
+    <p>
+      If you refund within 14 days (or any time, by request), the operator runs
+      <code>bash bin/admin.sh revoke &lt;plugin&gt; &lt;your-email&gt;</code> which removes your
+      record from KV within seconds. Subsequent plugin activations will fail.
+    </p>
+    <p>
+      To request full deletion at any time (refund or not), DM
+      <a href="https://x.com/hunterweb303" target="_blank" rel="noopener">@hunterweb303 on X</a>
+      or <a href="https://t.me/dsa885" target="_blank" rel="noopener">t.me/dsa885</a>. Deletion happens within 48 hours, typically within minutes.
+    </p>
+
+    <h2>What we do NOT do</h2>
+    <ul>
+      <li>No analytics, no telemetry, no error reporting.</li>
+      <li>No sale, sharing, or rental of your data to third parties.</li>
+      <li>No marketing emails to purchase addresses (DM is for activation only).</li>
+      <li>No tracking pixels or fingerprinting on the landing page (<code>duolakit.pages.dev</code> serves a static HTML file — no JavaScript analytics).</li>
+      <li>No collection of Claude Code conversation content, prompts, code, or any output the plugins help you produce.</li>
+    </ul>
+
+    <h2>Children</h2>
+    <p>
+      duolakit plugins are developer tools for use with Claude Code. They are not directed
+      at and not intended for use by children under 13.
+    </p>
+
+    <h2>Changes</h2>
+    <p>
+      If we materially change what data is collected or how it is used, the new policy
+      will be posted at this URL with an updated effective date. Existing Pro buyers
+      will be notified via the contact channel they used to purchase before any
+      retroactive change takes effect.
+    </p>
+
+    <h2>Contact</h2>
+    <p>
+      Privacy questions, deletion requests, or anything else:
+    </p>
+    <ul>
+      <li>X · <a href="https://x.com/hunterweb303" target="_blank" rel="noopener">@hunterweb303</a></li>
+      <li>Telegram · <a href="https://t.me/dsa885" target="_blank" rel="noopener">t.me/dsa885</a></li>
+      <li>GitHub issues · <a href="https://github.com/duolaAmengweb3/duolakit/issues" target="_blank" rel="noopener">duolaAmengweb3/duolakit</a></li>
+    </ul>
+
+    <footer>
+      <a href="/">∞ duolakit</a> · MIT plugin source · DM for Pro · no payment processor signup
+    </footer>
+  </div>
+</body>
+</html>
