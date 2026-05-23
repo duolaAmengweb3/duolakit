@@ -73,7 +73,7 @@ The heuristic in `hooks/log-tool.sh` is `input_chars / 4 + per-tool baseline`. I
      next session will reset to 1.0
 
    Pro persists calibration across sessions and gives you 7-day rolling
-   re-calibration. Buy: https://duolakit.gumroad.com/l/token-guardian
+   re-calibration. Get Pro: DM @hunterweb303 (X) or t.me/dsa885 — $9 lifetime
    ```
 
 7. **Confirm + report.**

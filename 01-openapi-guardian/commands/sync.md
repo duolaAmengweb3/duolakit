@@ -117,8 +117,8 @@ When you encounter a non-Express framework on Free tier, gracefully degrade:
   Detected Fastify in src/routes/*.ts — skipping these handlers.
 
   Pro unlocks Fastify + Hono + NestJS:
-    Buy:      https://duolakit.gumroad.com/l/openapi-guardian  ($19 one-time)
-    Activate: /openapi-activate <license-key>
+    Buy:      DM @hunterweb303 (X) or t.me/dsa885 — $19 one-time
+    Activate: /openapi-activate <your-purchase-email>
 ```
 
 Continue with Express files. Don't crash.

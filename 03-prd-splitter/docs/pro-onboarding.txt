@@ -3,14 +3,17 @@ PRD Splitter for Claude Code — Pro v1.0
 
 Thanks for buying!
 
+This file is the post-purchase onboarding message. The operator
+(duola) sends it after your payment is confirmed. It also gets
+checked into the public repo so anyone can preview what they're
+getting before they DM to buy.
+
 ───────────────────────────────────────────────────────────────
 ACTIVATION (use your purchase email — no license key needed)
 ───────────────────────────────────────────────────────────────
 
-Activation is by the email you typed at Gumroad checkout. It's the
-email this very file was delivered to.
-
-Open Claude Code in any project, then:
+The operator has just granted access to your email. Activation is
+real-time: open Claude Code in any project, then:
 
   /plugin marketplace add duolaAmengweb3/duolakit
   /plugin install prd-splitter@duolakit
@@ -21,8 +24,7 @@ You should see: "✓ Pro activated for prd-splitter (your-email)"
 Your activation works on unlimited personal devices. Re-run
 /prd-activate on each machine — it takes ~3 seconds.
 
-How it works: Gumroad pings our verification server within seconds
-of your purchase. Refunds are auto-handled.
+How it works: the operator (duola) runs `bash bin/admin.sh grant <plugin> <email>` after your payment is confirmed, which writes your email to Cloudflare KV. Activation reads from that KV.
 
 ───────────────────────────────────────────────────────────────
 USE IT
@@ -89,9 +91,9 @@ LINKS
 REFUND
 ───────────────────────────────────────────────────────────────
 
-14 days, no questions asked. Reply to the Gumroad receipt email
-or DM @hunterweb303 on X. Refunds are reflected in /prd-activate
-within ~10 seconds — the email is auto-removed from the buyers list.
+14 days, no questions asked. DM @hunterweb303 on X or t.me/dsa885.
+The operator will refund through whatever channel you paid + revoke
+your access (your /prd-activate will start failing within seconds).
 
 ───────────────────────────────────────────────────────────────
 

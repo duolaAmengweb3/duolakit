@@ -1,34 +1,34 @@
 ---
 name: prd-activate
-description: Activate the Pro tier for prd-splitter using the email you used at Gumroad checkout. Verified in real-time against the duolakit-license Worker. Stored locally at ~/.duolakit/licenses.json. No telemetry.
-argument-hint: "<email-you-used-at-gumroad-checkout>"
+description: Activate the Pro tier for prd-splitter using the email you gave when you DM'd to buy Pro. Verified in real-time against the duolakit-license Worker. Stored locally at ~/.duolakit/licenses.json. No telemetry.
+argument-hint: "<your-purchase-email>"
 ---
 
 # /prd-activate
 
 You are running the `prd-activate` command from the `prd-splitter` plugin.
 
-Your task: take the email the user gave you, verify against the duolakit-license Cloudflare Worker (which is fed by Gumroad's purchase webhook in real-time), and report success or failure.
+Your task: take the email the user gave you, verify against the duolakit-license Cloudflare Worker (which the operator updates in real-time when a buyer pays), and report success or failure.
 
 ## How activation works (so you can explain if asked)
 
-1. Buyer purchases on Gumroad (`hunterweb303.gumroad.com/l/prd-splitter`).
-2. Within seconds, Gumroad pings `duolakit-license.hxu92521.workers.dev/ping`.
+1. Buyer DMs [@hunterweb303 on X](https://x.com/hunterweb303) or [t.me/dsa885](https://t.me/dsa885) to buy Pro ($19, any payment method).
+2. After payment is confirmed, the operator runs `bash bin/admin.sh grant <plugin> <email>` which POSTs the email to the duolakit-license Worker.
 3. The Worker writes the buyer's email to Cloudflare KV.
 4. The buyer runs `/prd-activate <their-email>`.
 5. This script GETs `/verify?plugin=prd-splitter&email=<email>`.
 6. If the email is in KV → success → write `~/.duolakit/licenses.json` and unlock Pro.
 
-End-to-end latency from purchase to activation: typically < 30 seconds.
+End-to-end latency from operator grant to buyer activation: < 5 seconds.
 
 ## Procedure
 
 1. **Parse the email.** First argument. If missing, print usage:
    ```
-   usage: /prd-activate <email-you-used-at-gumroad-checkout>
+   usage: /prd-activate <your-purchase-email>
 
-   The email is in your Gumroad receipt. It's the address you typed at checkout.
-   Buy: https://hunterweb303.gumroad.com/l/prd-splitter
+   Use the email you gave when you DM'd to buy Pro.
+   Buy: DM [@hunterweb303 on X](https://x.com/hunterweb303) or [t.me/dsa885](https://t.me/dsa885) — $19 lifetime
    ```
    and stop.
 
@@ -69,7 +69,7 @@ End-to-end latency from purchase to activation: typically < 30 seconds.
 bash ${CLAUDE_PLUGIN_ROOT}/bin/license.sh deactivate
 ```
 
-Removes only the `prd-splitter` slot from `~/.duolakit/licenses.json`. Other duolakit plugin licenses are untouched. Refunds and disputes are auto-handled by the Worker — within seconds of the Gumroad refund webhook, the email is removed from KV and subsequent `check` calls will fail.
+Removes only the `prd-splitter` slot from `~/.duolakit/licenses.json`. Other duolakit plugin licenses are untouched. Refunds are handled manually: when the operator agrees to refund, they run `bash bin/admin.sh revoke <plugin> <email>` which removes the email from KV. Subsequent `check` calls fail within seconds.
 
 ## What you must NOT do
 

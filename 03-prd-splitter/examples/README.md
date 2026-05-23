@@ -47,7 +47,7 @@ Produces `PRD-tree.linear.csv` ready to import in Linear.
 ## Pro: push directly to Linear
 
 Requires:
-- A valid Pro license. Activate via `/prd-activate <license-key>` after buying on Gumroad — that writes a verified slot to `~/.duolakit/licenses.json`. For local testing without a real key, use `bash ../bin/license.sh --mock-success activate TEST-KEY`.
+- A valid Pro license. Activate via `/prd-activate <your-purchase-email>` after DM-ing @hunterweb303 (X) or t.me/dsa885 to buy ($19). The operator grants access via `bash bin/admin.sh grant prd-splitter <email>` which writes a verified slot to `~/.duolakit/licenses.json`. For local testing, use `bash ../bin/license.sh --mock-success activate test@example.com`.
 - `LINEAR_API_KEY` env var (get one at https://linear.app/settings/api)
 
 Always dry-runs first:

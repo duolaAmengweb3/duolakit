@@ -42,7 +42,7 @@ Forget one and prod breaks. Remember all four and waste 30 minutes per change.
 | `/openapi-check` | Detect drift between spec / routes / types / SDK | Free |
 | `/openapi-sync`  | Bring all 4 into agreement (asks before each write) | Free (Express) / Pro (Fastify+Hono+NestJS) |
 | `/openapi-init`  | Bootstrap a new project (Express + OpenAPI scaffolding) | Free |
-| `/openapi-activate <key>` | Verify Gumroad license, unlock Pro framework + multi-service | n/a |
+| `/openapi-activate <email>` | Verify your purchase email, unlock Pro framework + multi-service | n/a |
 
 ### Try the demo in 5 minutes
 
@@ -93,7 +93,7 @@ A PreToolUse hook fires when you edit `openapi.yaml` to remind you to run `/open
 
 **Free is genuinely free forever.** Pro adds breadth (more frameworks + multi-service) and support. No rug-pull, no usage caps.
 
-[**Buy Pro on Gumroad →**](https://duolakit.gumroad.com/l/openapi-guardian) *(coming soon)*
+**Get Pro · $19 lifetime** — DM [@hunterweb303 on X](https://x.com/hunterweb303) or [t.me/dsa885](https://t.me/dsa885). Any payment method works (Alipay, WeChat, Stripe link, PayPal, USDT, bank transfer — pick what fits you). You'll get activation within minutes.
 
 ### Refund
 
@@ -107,7 +107,7 @@ A PreToolUse hook fires when you edit `openapi.yaml` to remind you to run `/open
 - `prd-reviewer` style second-opinion sub-agent for diffs > 50 lines
 - PreToolUse hook nudge when editing the spec
 - Express + Fastify runnable demo projects with intentional drift
-- `/openapi-activate <license-key>` actually verifies against Gumroad
+- `/openapi-activate <purchase-email>` verifies against the duolakit license Worker in real-time
 
 ### What's next (not in v1.0)
 
@@ -161,7 +161,7 @@ A PreToolUse hook fires when you edit `openapi.yaml` to remind you to run `/open
 | `/openapi-check` | 检测 spec / routes / types / SDK 之间的漂移 | 免费 |
 | `/openapi-sync`  | 同步 4 处（每次写文件前会问你确认） | 免费 Express / Pro 多框架 |
 | `/openapi-init`  | 在新项目里初始化 Express + OpenAPI 脚手架 | 免费 |
-| `/openapi-activate <key>` | 校验 Gumroad license，解锁 Pro 多框架 + 多服务 | — |
+| `/openapi-activate <email>` | 校验购买邮箱，解锁 Pro 多框架 + 多服务 | — |
 
 ### 5 分钟试 demo
 
@@ -212,7 +212,7 @@ npm run dev      # 启动服务 :3000
 
 **免费版永久免费，不会被砍掉**。Pro 加的是广度（更多框架 + 多服务）和支持。无套路，无用量上限。
 
-[**Gumroad 买 Pro →**](https://duolakit.gumroad.com/l/openapi-guardian) *（即将上架）*
+**买 Pro · $19 永久** — DM [@hunterweb303 (X)](https://x.com/hunterweb303) 或 [t.me/dsa885](https://t.me/dsa885)。任意付款方式（支付宝 / 微信 / Stripe / PayPal / USDT / 银行转账 / etc.），几分钟内激活。
 
 ### 退款
 
@@ -226,7 +226,7 @@ npm run dev      # 启动服务 :3000
 - diff > 50 行自动调起 `prd-reviewer` 风格的第二意见子 agent
 - 编辑 spec 时 PreToolUse hook 弹提醒
 - Express + Fastify 双 demo 项目，都带故意漂移
-- `/openapi-activate <license-key>` 真调 Gumroad 校验
+- `/openapi-activate <购买邮箱>` 实时校验（duolakit license Worker）
 
 ### 下一步（不在 v1.0）
 

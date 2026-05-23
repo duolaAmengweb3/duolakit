@@ -12,7 +12,7 @@ Your task: given a task description, recommend which model to route to **for the
 
 ## Free vs Pro
 
-- **Free**: This command tells the user "Pro feature — upgrade to unlock multi-provider routing" and links to Gumroad. Then it shows ONE generic suggestion: "If Claude is at limit, try OpenRouter's `anthropic/claude-3.5-sonnet` proxy as a stopgap."
+- **Free**: This command tells the user "Pro feature — DM @hunterweb303 (X) or t.me/dsa885 to buy" and shows ONE generic suggestion: "If Claude is at limit, try OpenRouter's `anthropic/claude-3.5-sonnet` proxy as a stopgap."
 - **Pro**: Full routing analysis (see procedure below).
 
 ## How to detect Pro status
@@ -26,7 +26,7 @@ bash ${CLAUDE_PLUGIN_ROOT}/bin/license.sh check
 Exit `0` → Pro is active, full routing analysis follows.
 Exit `1` → Free tier, run the abbreviated Free-tier flow described above.
 
-Customers activate via `/token-activate <key>` after purchasing on Gumroad.
+Customers activate via `/token-activate <their-purchase-email>` after DM-ing to buy Pro and being granted access by the operator.
 
 ## Pro procedure
 

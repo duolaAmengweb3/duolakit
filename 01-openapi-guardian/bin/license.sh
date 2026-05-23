@@ -3,16 +3,22 @@
 #
 # Activation model: REAL-TIME EMAIL VERIFICATION via duolakit-license Worker.
 #
-#   1. Buyer purchases on Gumroad.
-#   2. Within seconds, Gumroad pings our Cloudflare Worker, which writes
-#      the buyer's email to KV.
-#   3. Buyer runs /openapi-activate <their-purchase-email>.
-#   4. This script GETs the Worker's /verify endpoint.
-#   5. If the email is in KV → write ~/.duolakit/licenses.json and unlock Pro.
+#   1. Buyer DMs @hunterweb303 on X (or t.me/dsa885) to buy Pro — any payment
+#      method works (no payment processor required).
+#   2. After payment is confirmed, operator (duola) runs
+#      `bash bin/admin.sh grant <plugin> <email>` which POSTs the email to the
+#      duolakit-license Worker. End-to-end: < 5 seconds from grant to activation.
+#   3. The Worker writes the email to Cloudflare KV.
+#   4. Buyer runs /openapi-activate <their-email>.
+#   5. This script GETs the Worker's /verify endpoint.
+#   6. If the email is in KV → write ~/.duolakit/licenses.json and unlock Pro.
 #
-# Why this model: as of 2026-05, Gumroad's UI did not expose a per-product
-# "Generate license keys" toggle on standard digital products, so we built
-# our own real-time verification on top of the Gumroad Ping webhook.
+# Why this model: DM-based sales avoids configuring any payment processor
+# (Gumroad / Stripe / Lemon Squeezy all need real-name + bank + KYC). The
+# operator accepts payment any way the buyer prefers (Alipay, WeChat, USDT,
+# PayPal, Stripe Payment Link, bank transfer, etc.) and grants access via the
+# admin script. Scales to ~10/day before manual overhead matters; at that
+# point swap to a Gumroad/Stripe ping (the Worker is already wired for it).
 #
 # Usage:
 #   license.sh check                        → exit 0 if Pro is active, 1 if not
@@ -150,7 +156,7 @@ case "${OP}" in
   activate)
     EMAIL_RAW="${1:-}"
     if [ -z "${EMAIL_RAW}" ]; then
-      echo "usage: license.sh activate <email-you-used-at-gumroad-checkout>" >&2
+      echo "usage: license.sh activate <your-purchase-email>" >&2
       exit 2
     fi
     EMAIL=$(normalize_email "${EMAIL_RAW}")
@@ -179,10 +185,10 @@ except: print('')" 2>/dev/null || echo "")
         exit 5
       fi
       echo "activation failed: ${EMAIL} is not on the ${PLUGIN_NAME} buyers list." >&2
-      echo "  - If you bought < 60 seconds ago, the Gumroad webhook may still be in flight. Wait and retry." >&2
-      echo "  - The email must exactly match the one you used at Gumroad checkout." >&2
-      echo "  - Refunded / disputed purchases are automatically removed." >&2
-      echo "  - Contact noreply@duolakit.pages.dev with your Gumroad order ID if this persists." >&2
+      echo "  - If you DM'd to buy Pro < 60 seconds ago, the operator may not have granted access yet. Wait and retry." >&2
+      echo "  - The email must exactly match the one you gave when buying." >&2
+      echo "  - Refunds are reflected within seconds of the operator revoking." >&2
+      echo "  - Haven't bought yet? DM @hunterweb303 on X or t.me/dsa885 (\$19 lifetime)." >&2
       exit 3
     fi
     ;;

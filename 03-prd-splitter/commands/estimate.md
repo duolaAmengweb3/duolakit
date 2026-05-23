@@ -98,7 +98,7 @@ Exit `1` (Free) → skip the reviewer entirely. Note in the final summary:
 ```
 ℹ  3 stories estimated 8+ pts (potentially over-sized). Pro tier invokes
    the prd-reviewer sub-agent to second-opinion each one. Activate with
-   /prd-activate <license-key> or see https://duolakit.gumroad.com/l/prd-splitter
+   /prd-activate <your-purchase-email> — DM @hunterweb303 (X) or t.me/dsa885 to buy ($19)
 ```
 
 | Capability | Free | Pro |

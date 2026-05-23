@@ -60,7 +60,7 @@ Pro $19 一次性：reviewer agent + 直推 Linear（idempotent）+ 持久校准
 
 → duolakit.pages.dev
 → github.com/duolaAmengweb3/duolakit
-→ duolakit.gumroad.com/l/prd-splitter
+→ DM @hunterweb303 (X) / t.me/dsa885（$19 买 Pro，任意付款方式）
 
 made by @hunterweb303
 
@@ -77,7 +77,7 @@ PRD → tickets 这件事你现在用什么工具/流程？最痛的环节是什
 - **二三行讲两种失败模式**：过度拆 vs 拍脑袋 —— 任何做过 PM 的都能对号入座
 - **「我做了 plugin 治这个」**：建立信任，逼读者展开
 - **5 条主见列表**：是这个工具的真区分点，不是其他 PRD 工具能给的
-- **CTA 三选一**：landing / GitHub / Gumroad
+- **CTA 三选一**：landing / GitHub / DM @hunterweb303 直接买 Pro
 - **互动结尾**：触发 PM / Tech Lead 圈层的评论
 
 ---

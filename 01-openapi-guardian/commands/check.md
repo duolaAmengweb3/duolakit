@@ -96,6 +96,6 @@ When skipping a non-Express handler on Free, note it in the output:
 ⚠ Skipped: src/services/auth/openapi.yaml (Pro only — multi-service)
 ⚠ Skipped: src/routes/fastify-auth.ts  (Pro only — non-Express framework)
 
-  Pro: https://duolakit.gumroad.com/l/openapi-guardian
+  Get Pro: DM @hunterweb303 (X) or t.me/dsa885 — $19 lifetime
   Activate: /openapi-activate <license-key>
 ```

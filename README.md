@@ -49,7 +49,7 @@ Built by [duola](https://x.com/hunterweb303). Same author as [mimo-tui](https://
 
 ## Status
 
-`v1.0` — three production-grade plugins, full test suite, Gumroad license verification wired up. The Pro tiers are hard-gated by `bin/license.sh` in each plugin (not soft markdown promises).
+`v1.0` — three production-grade plugins, full test suite, real-time license verification via Cloudflare Worker. Pro tiers are hard-gated by `bin/license.sh` in each plugin (not soft markdown promises). Pro purchase is DM-based: ping [@hunterweb303 on X](https://x.com/hunterweb303) or [t.me/dsa885](https://t.me/dsa885) — any payment method, any currency, no payment processor signup required.
 
 ## Verify everything works
 

@@ -3,14 +3,17 @@ OpenAPI Guardian for Claude Code — Pro v1.0
 
 Thanks for buying!
 
+This file is the post-purchase onboarding message. The operator
+(duola) sends it after your payment is confirmed. It also gets
+checked into the public repo so anyone can preview what they're
+getting before they DM to buy.
+
 ───────────────────────────────────────────────────────────────
-ACTIVATION (use your purchase email — no license key needed)
+ACTIVATION (use the email you gave when you DM'd to buy)
 ───────────────────────────────────────────────────────────────
 
-Activation is by the email you typed at Gumroad checkout. It's the
-email this very file was delivered to.
-
-Open Claude Code in any project, then:
+The operator has just granted access to your email. Activation is
+real-time: open Claude Code in any project, then:
 
   /plugin marketplace add duolaAmengweb3/duolakit
   /plugin install openapi-guardian@duolakit
@@ -20,10 +23,6 @@ You should see: "✓ Pro activated for openapi-guardian (your-email)"
 
 Your activation works on unlimited personal devices. Re-run
 /openapi-activate on each machine — it takes ~3 seconds.
-
-How it works: Gumroad pings our verification server within seconds
-of your purchase. The server checks your email against the buyers
-list at activation time. Refunds are auto-handled.
 
 ───────────────────────────────────────────────────────────────
 USE IT
@@ -57,19 +56,19 @@ WHAT YOU UNLOCKED (vs free tier)
 LINKS
 ───────────────────────────────────────────────────────────────
 
-  Source:     https://github.com/duolaAmengweb3/duolakit/tree/main/01-openapi-guardian
+  Source:      https://github.com/duolaAmengweb3/duolakit/tree/main/01-openapi-guardian
   Marketplace: https://duolakit.pages.dev
-  Issues:     https://github.com/duolaAmengweb3/duolakit/issues
-  Author:     https://x.com/hunterweb303
-  Telegram:   https://t.me/dsa885
+  Issues:      https://github.com/duolaAmengweb3/duolakit/issues
+  Author:      https://x.com/hunterweb303
+  Telegram:    https://t.me/dsa885
 
 ───────────────────────────────────────────────────────────────
 REFUND
 ───────────────────────────────────────────────────────────────
 
-14 days, no questions asked. Reply to the Gumroad receipt email
-or DM @hunterweb303 on X. Refunds are reflected in /openapi-activate
-within ~10 seconds — the email is auto-removed from the buyers list.
+14 days, no questions asked. DM @hunterweb303 on X or t.me/dsa885.
+The operator will refund through whatever channel you paid + revoke
+your access (your /openapi-activate will start failing within seconds).
 
 ───────────────────────────────────────────────────────────────
 

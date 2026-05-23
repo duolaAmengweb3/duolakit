@@ -25,8 +25,8 @@ Exit `1` → Pro is NOT active. Refuse the command and print:
 
 Free tier alternative: /prd-export linear  (produces a CSV you drop into Linear).
 
-Buy Pro:    https://duolakit.gumroad.com/l/prd-splitter
-Activate:   /prd-activate <license-key>
+Buy Pro:    DM @hunterweb303 (X) or t.me/dsa885 — $19 lifetime
+Activate:   /prd-activate <your-purchase-email>
 ```
 
 Exit `0` → Pro is active. Proceed with the procedure below.

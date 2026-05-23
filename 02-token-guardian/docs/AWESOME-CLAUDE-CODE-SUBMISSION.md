@@ -94,8 +94,8 @@ warnings + budget config + session calibration + status reporting.
 Optional Pro ($9 one-time) adds multi-provider routing recommendations
 and persistent calibration. This submission is about the free tier.
 
-No telemetry, no SaaS, no calls home (except optional Gumroad license
-verification during /token-activate). Runs entirely inside the Claude
+No telemetry, no SaaS, no calls home (except calling the duolakit license Worker to verify
+your purchase email during /token-activate). Runs entirely inside the Claude
 Code session.
 
 Particularly relevant to users on Claude Code Max ($200/mo) who have
@@ -120,7 +120,7 @@ hit the 5h rolling window mid-task — a common complaint in 2026 Q1.
 
 在此之前可以做：
 1. 发首条 X 推文（参考 docs/X-LAUNCH-POST.md）
-2. 上 Gumroad（参考 docs/GUMROAD-LISTING.md）
+2. DM 接洽流程跑通（先卖出 1-2 单）
 3. 让 1-2 个朋友试用 + star，提升真实度
 
 ---

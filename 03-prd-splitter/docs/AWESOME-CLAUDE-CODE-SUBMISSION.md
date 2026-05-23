@@ -102,7 +102,7 @@ reviewer sub-agent and direct Linear API push. This submission focuses on
 the free tier.
 
 No telemetry, no SaaS, no calls home (except optional /prd-activate which
-hits Gumroad's license verify). The Linear API key is read from env every
+hits the duolakit license Worker to verify your purchase email). The Linear API key is read from env every
 call, never written to disk, and auto-masked in mock-mode output to
 prevent accidental leak in logs.
 ```
@@ -123,7 +123,7 @@ prevent accidental leak in logs.
 
 可以在等待期做：
 1. 发首条 X 推（参考 docs/X-LAUNCH-POST.md）
-2. 上 Gumroad
+2. DM 接洽流程跑通
 3. 发到 PM/agile 社群（r/projectmanagement, r/agile, LinkedIn）
 4. 让几个 PM 朋友试用 + 反馈
 

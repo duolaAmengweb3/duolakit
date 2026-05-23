@@ -111,7 +111,7 @@ Claude Code session.
 在此之前可以做：
 1. 在 X 发首条推文（拿一些 stars 让 maintainer 提交时更愿意收）
 2. 让朋友试用 demo，至少 1 个外部 reply / star
-3. 把 Gumroad 链接也上好（这样 awesome 收录后流量直接能转化）
+3. 把 DM 接洽流程跑通（先卖出 1-2 单证明转化链路通）
 
 ---
 

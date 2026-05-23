@@ -1,6 +1,6 @@
 # X 发布长推 · openapi-guardian
 
-> 上架 Gumroad 后立即发。X 会员长推格式（25,000 字符），但**前 2 行最关键**，决定有没有人点开"展开"。
+> 首发立即发。X 会员长推格式（25,000 字符），但**前 2 行最关键**，决定有没有人点开"展开"。
 
 ---
 
@@ -54,7 +54,7 @@ Pro $19 一次性：Fastify/Hono/NestJS + 多服务 registry
 
 → duolakit.pages.dev
 → github.com/duolaAmengweb3/duolakit
-→ duolakit.gumroad.com/l/openapi-guardian  
+→ DM @hunterweb303 (X) / t.me/dsa885（$19 买 Pro，任意付款方式）  
 
 made by @hunterweb303
 same author 之前做了 mimo-tui (mimo-tui.pages.dev)
@@ -70,7 +70,7 @@ same author 之前做了 mimo-tui (mimo-tui.pages.dev)
 - **悬念**：第一行讲反差，第二行"我做了一个"建立悬念，逼读者点开"展开"。
 - **不立刻卖**：先讲痛点（schema drift），最后才报价 — 转化更高。
 - **矩阵叙事**：第三段引入 duolakit 是矩阵不是单品，让这一条推同时为 02、03 引流。
-- **CTA 三选一**：landing / GitHub / Gumroad，让不同动机的人各取所需。
+- **CTA 三选一**：landing / GitHub / DM @hunterweb303 直接买 Pro。
 - **互动结尾**："留言说你的 stack" 触发评论 —— X 算法重权重评论 > 点赞。
 
 ---
@@ -90,7 +90,7 @@ X 一条推可以带 4 图，按这个顺序：
 1. **drift 截图**：模拟 `/openapi-check` 输出表格（4 列 ✓✗），1280×720
 2. **修复截图**：模拟 `/openapi-sync` 输出 + git diff 视觉效果
 3. **duolakit 矩阵图**：landing hero 截图（已上线的、未来的 plugin 卡片网格）
-4. **Gumroad 商品页**：让人立刻知道怎么买
+4. **DM 截图**：你的 X handle 或 Telegram 二维码，让人立刻知道怎么买
 
 ---
 
