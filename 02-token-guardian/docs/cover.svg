@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1a0b2e"/>
+      <stop offset="50%" stop-color="#4c1d95"/>
+      <stop offset="100%" stop-color="#831843"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#a78bfa"/>
+      <stop offset="100%" stop-color="#f9a8d4"/>
+    </linearGradient>
+    <linearGradient id="meter" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#4ade80"/>
+      <stop offset="60%" stop-color="#fbbf24"/>
+      <stop offset="85%" stop-color="#fb7185"/>
+      <stop offset="100%" stop-color="#dc2626"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1280" height="720" fill="url(#bg)"/>
+
+  <g opacity="0.07" stroke="#ffffff" stroke-width="1" fill="none">
+    <path d="M0 180 L1280 180"/>
+    <path d="M0 360 L1280 360"/>
+    <path d="M0 540 L1280 540"/>
+    <path d="M320 0 L320 720"/>
+    <path d="M640 0 L640 720"/>
+    <path d="M960 0 L960 720"/>
+  </g>
+
+  <g font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace" fill="#ffffff">
+    <text x="80" y="110" font-size="26" opacity="0.65" letter-spacing="4">duolakit · plugin 02</text>
+    <text x="80" y="240" font-size="104" font-weight="700">Token</text>
+    <text x="80" y="350" font-size="104" font-weight="700" fill="url(#accent)">Guardian</text>
+    <text x="80" y="410" font-size="30" opacity="0.85">for Claude Code · $9 lifetime</text>
+  </g>
+
+  <g transform="translate(80,470)" font-family="'JetBrains Mono','SF Mono',Menlo,monospace" fill="#ffffff">
+    <text x="0" y="0" font-size="20" opacity="0.75">5h rolling window</text>
+
+    <g transform="translate(0,20)">
+      <rect x="0" y="0" width="800" height="36" rx="6" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.18)"/>
+      <rect x="0" y="0" width="660" height="36" rx="6" fill="url(#meter)" opacity="0.85"/>
+      <text x="820" y="26" font-size="22" font-weight="700">82%</text>
+    </g>
+
+    <text x="0"   y="100" font-size="18" opacity="0.85">⚠  Heads up: 180,400 / 220,000 tokens in last 5h</text>
+    <text x="0"   y="128" font-size="18" opacity="0.85">⏱  ETA to limit: ~32 min at current pace</text>
+    <text x="0"   y="156" font-size="18" opacity="0.85">↘  /token-route → fallback to openrouter/deepseek-chat ($0.27/M)</text>
+  </g>
+
+  <text x="80" y="690" font-family="'JetBrains Mono','SF Mono',Menlo,monospace" font-size="22" fill="#fbcfe8" opacity="0.9">warned ~30 min before you blow through your 5h window</text>
+
+  <text x="1200" y="680" font-family="'JetBrains Mono','SF Mono',Menlo,monospace" font-size="22" fill="#ffffff" opacity="0.55" text-anchor="end">duolakit.pages.dev</text>
+
+  <g transform="translate(1080,100)">
+    <circle cx="60" cy="60" r="55" fill="none" stroke="url(#accent)" stroke-width="3"/>
+    <text x="60" y="82" font-family="'JetBrains Mono','SF Mono',Menlo,monospace" font-size="64" fill="#ffffff" text-anchor="middle">∞</text>
+  </g>
+</svg>

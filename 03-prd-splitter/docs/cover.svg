@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1a0b2e"/>
+      <stop offset="50%" stop-color="#4c1d95"/>
+      <stop offset="100%" stop-color="#831843"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#a78bfa"/>
+      <stop offset="100%" stop-color="#f9a8d4"/>
+    </linearGradient>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#a78bfa"/>
+    </marker>
+  </defs>
+
+  <rect width="1280" height="720" fill="url(#bg)"/>
+
+  <g opacity="0.07" stroke="#ffffff" stroke-width="1" fill="none">
+    <path d="M0 180 L1280 180"/>
+    <path d="M0 360 L1280 360"/>
+    <path d="M0 540 L1280 540"/>
+    <path d="M320 0 L320 720"/>
+    <path d="M640 0 L640 720"/>
+    <path d="M960 0 L960 720"/>
+  </g>
+
+  <g font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace" fill="#ffffff">
+    <text x="80" y="110" font-size="26" opacity="0.65" letter-spacing="4">duolakit · plugin 03</text>
+    <text x="80" y="240" font-size="104" font-weight="700">PRD</text>
+    <text x="80" y="350" font-size="104" font-weight="700" fill="url(#accent)">Splitter</text>
+    <text x="80" y="410" font-size="30" opacity="0.85">for Claude Code · $19 lifetime</text>
+  </g>
+
+  <g transform="translate(80,470)" font-family="'JetBrains Mono','SF Mono',Menlo,monospace" fill="#ffffff">
+    <g stroke="#a78bfa" stroke-width="2" fill="none">
+      <rect x="0"   y="0"   width="120" height="50" rx="6"/>
+      <line x1="120" y1="25" x2="200" y2="25" marker-end="url(#arr)"/>
+
+      <rect x="200" y="0"   width="120" height="50" rx="6"/>
+      <line x1="320" y1="25" x2="400" y2="25" marker-end="url(#arr)"/>
+
+      <rect x="400" y="0"   width="120" height="50" rx="6"/>
+      <line x1="520" y1="25" x2="600" y2="25" marker-end="url(#arr)"/>
+
+      <rect x="600" y="0"   width="160" height="50" rx="6"/>
+    </g>
+    <text x="60"  y="32" font-size="20" text-anchor="middle">PRD.md</text>
+    <text x="260" y="32" font-size="20" text-anchor="middle">5 epics</text>
+    <text x="460" y="32" font-size="20" text-anchor="middle">16 stories</text>
+    <text x="680" y="32" font-size="20" text-anchor="middle">→ Linear</text>
+
+    <text x="0"   y="120" font-size="20" fill="#fbcfe8" opacity="0.9">Fibonacci only (1, 2, 3, 5, 8, 13). 4 / 6 / 7 forbidden by design.</text>
+    <text x="0"   y="150" font-size="20" fill="#fbcfe8" opacity="0.8">Refuses over-decomposition. Cross-cutting concerns auto-detected.</text>
+    <text x="0"   y="180" font-size="20" fill="#fbcfe8" opacity="0.8">Pro: dry-run + idempotent push to Linear via GraphQL.</text>
+  </g>
+
+  <text x="1200" y="680" font-family="'JetBrains Mono','SF Mono',Menlo,monospace" font-size="22" fill="#ffffff" opacity="0.55" text-anchor="end">duolakit.pages.dev</text>
+
+  <g transform="translate(1080,100)">
+    <circle cx="60" cy="60" r="55" fill="none" stroke="url(#accent)" stroke-width="3"/>
+    <text x="60" y="82" font-family="'JetBrains Mono','SF Mono',Menlo,monospace" font-size="64" fill="#ffffff" text-anchor="middle">∞</text>
+  </g>
+</svg>
