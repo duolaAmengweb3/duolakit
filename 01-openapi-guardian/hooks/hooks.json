@@ -1,14 +1,16 @@
 {
-  "PreToolUse": [
-    {
-      "matcher": "Edit|Write",
-      "description": "Warn when editing OpenAPI spec — suggest /openapi-sync after",
-      "hooks": [
-        {
-          "type": "command",
-          "command": "node -e \"const i=JSON.parse(require('fs').readFileSync(0,'utf8'));const p=(i.tool_input&&i.tool_input.file_path)||'';if(/openapi\\.(yaml|yml|json)$|schemas\\/.+\\.(yaml|yml|json)$/.test(p)){process.stderr.write('\\n[openapi-guardian] Editing OpenAPI spec — remember to run /openapi-sync after to update routes/types/SDK.\\n')}\""
-        }
-      ]
-    }
-  ]
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "description": "Warn when editing OpenAPI spec — suggest /openapi-sync after",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node -e \"const i=JSON.parse(require('fs').readFileSync(0,'utf8'));const p=(i.tool_input&&i.tool_input.file_path)||'';if(/openapi\\.(yaml|yml|json)$|schemas\\/.+\\.(yaml|yml|json)$/.test(p)){process.stderr.write('\\n[openapi-guardian] Editing OpenAPI spec — remember to run /openapi-sync after to update routes/types/SDK.\\n')}\""
+          }
+        ]
+      }
+    ]
+  }
 }
