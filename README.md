@@ -29,7 +29,7 @@
 | 00 | [hello](./00-hello) | ✅ Live | Sanity check that the install pipeline works | — |
 | 01 | [openapi-guardian](./01-openapi-guardian) | ✅ Live | OpenAPI ↔ routes ↔ types ↔ SDK 4-way sync | $19 |
 | 02 | [token-guardian](./02-token-guardian) | ✅ Live | Heuristic 5h-window budget guard + OpenRouter routing (Pro) | $9 |
-| 03 | [prd-splitter](./03-prd-splitter) | 📅 Planned | PRD → Linear/Jira ticket breakdown + estimation | $19 |
+| 03 | [prd-splitter](./03-prd-splitter) | ✅ Live | PRD → epic/story/task tree with Fibonacci estimates + Linear push (Pro) | $19 |
 
 ---
 

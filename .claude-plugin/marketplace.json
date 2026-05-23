@@ -47,6 +47,18 @@
       },
       "homepage": "https://duolakit.pages.dev",
       "keywords": ["claude-code", "token", "budget", "cost", "monitoring", "openrouter", "fallback", "rate-limit"]
+    },
+    {
+      "name": "prd-splitter",
+      "source": "./03-prd-splitter",
+      "description": "Turn a PRD into an epic → story → task tree with Fibonacci estimates. Export to Markdown / Linear-CSV / Jira-CSV, or (Pro) push straight to Linear.",
+      "version": "1.0.0",
+      "author": {
+        "name": "duola",
+        "url": "https://x.com/hunterweb303"
+      },
+      "homepage": "https://duolakit.pages.dev",
+      "keywords": ["prd", "linear", "jira", "task-breakdown", "estimation", "fibonacci", "agile", "claude-code"]
     }
   ]
 }

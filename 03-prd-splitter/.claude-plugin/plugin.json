@@ -1,0 +1,13 @@
+{
+  "name": "prd-splitter",
+  "version": "1.0.0",
+  "description": "Turn a long PRD into an epic → story → task tree with Fibonacci estimates and acceptance criteria. Export to Markdown / Linear-CSV / Jira-CSV, or (Pro) push straight to Linear via API.",
+  "author": {
+    "name": "duola",
+    "url": "https://x.com/hunterweb303"
+  },
+  "license": "MIT",
+  "homepage": "https://duolakit.pages.dev",
+  "repository": "https://github.com/duolaAmengweb3/duolakit",
+  "keywords": ["prd", "linear", "jira", "task-breakdown", "estimation", "fibonacci", "agile", "claude-code"]
+}
