@@ -15,7 +15,20 @@ npm install
 npm run dev
 ```
 
-Server starts on `http://localhost:3000`.
+Server starts on `http://localhost:3000`. Set `PORT` to override:
+
+```bash
+PORT=3344 npm run dev
+```
+
+Smoke test it:
+
+```bash
+curl http://localhost:3000/users                                        # → []
+curl -X POST http://localhost:3000/users -H 'content-type: application/json' \
+     -d '{"email":"alice@example.com","name":"Alice"}'                   # → 201 with user
+curl -X DELETE http://localhost:3000/users/<id>                          # → 404 (intentional drift)
+```
 
 ## Try the drift detection (in Claude Code)
 

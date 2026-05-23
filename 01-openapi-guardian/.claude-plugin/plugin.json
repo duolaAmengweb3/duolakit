@@ -1,6 +1,6 @@
 {
   "name": "openapi-guardian",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Auto-sync OpenAPI spec ↔ route handlers ↔ TypeScript types ↔ SDK clients. Change one place, four others update. No more schema drift bugs at 11pm.",
   "author": {
     "name": "duola",

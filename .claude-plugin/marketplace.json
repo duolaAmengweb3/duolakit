@@ -8,7 +8,7 @@
   },
   "metadata": {
     "description": "Independent tools for Claude Code power users — real workflows, not framework wrappers.",
-    "version": "0.1.0",
+    "version": "1.0.0",
     "homepage": "https://duolakit.pages.dev"
   },
   "plugins": [
@@ -16,7 +16,7 @@
       "name": "hello",
       "source": "./00-hello",
       "description": "Sanity check plugin — verifies the install pipeline works. Says hello back.",
-      "version": "0.1.0",
+      "version": "1.0.0",
       "author": {
         "name": "duola",
         "url": "https://x.com/hunterweb303"
@@ -28,7 +28,7 @@
       "name": "openapi-guardian",
       "source": "./01-openapi-guardian",
       "description": "Auto-sync OpenAPI spec ↔ route handlers ↔ TypeScript types ↔ SDK clients. Change one place, four others update.",
-      "version": "0.1.0",
+      "version": "1.0.0",
       "author": {
         "name": "duola",
         "url": "https://x.com/hunterweb303"

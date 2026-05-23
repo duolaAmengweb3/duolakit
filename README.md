@@ -49,7 +49,19 @@ Built by [duola](https://x.com/hunterweb303). Same author as [mimo-tui](https://
 
 ## Status
 
-`v0.1` — bootstrapping. Repo public on day 1 to keep myself honest.
+`v1.0` — three production-grade plugins, full test suite, Gumroad license verification wired up. The Pro tiers are hard-gated by `bin/license.sh` in each plugin (not soft markdown promises).
+
+## Verify everything works
+
+```bash
+bash tests/run-all.sh
+```
+
+Validates every plugin in the marketplace:
+- JSON / markdown frontmatter / shell syntax
+- SKU-01 Express demo (npm install, tsc, server boot, GET / POST / GET-by-id / DELETE-intentional-404)
+- SKU-02 hook smoke test (logging, threshold warnings, dedupe, window aging, custom budget)
+- SKU-03 PRD/tree validity + Linear push helper (mock mode, error paths, API-key masking)
 
 ---
 

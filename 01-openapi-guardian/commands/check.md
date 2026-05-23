@@ -74,7 +74,28 @@ Your task: detect drift between the 4 components (spec / routes / types / SDK) a
 - Don't guess if a file doesn't exist — ask the user.
 - Don't report drift for `examples/` or `tests/` files (those are intentional).
 
-## Free vs Pro
+## Free vs Pro — enforced via license check
 
-- Free: single spec file, Express handlers only.
-- Pro: multi-service (multiple specs in same repo) + Fastify / Hono / NestJS handlers. If user has handler files matching Pro-only frameworks, note them but continue checking what you can.
+**Before scanning multiple spec files OR non-Express frameworks**, shell out to:
+
+```bash
+bash ${CLAUDE_PLUGIN_ROOT}/bin/license.sh check
+```
+
+Exit `0` → Pro active, scan everything.
+Exit `1` → Free, restrict to one spec + Express handlers.
+
+| Tier | What `/openapi-check` scans |
+|---|---|
+| Free | First spec file found + Express routes only |
+| Pro  | All spec files (multi-service) + Express / Fastify / Hono / NestJS routes |
+
+When skipping a non-Express handler on Free, note it in the output:
+
+```
+⚠ Skipped: src/services/auth/openapi.yaml (Pro only — multi-service)
+⚠ Skipped: src/routes/fastify-auth.ts  (Pro only — non-Express framework)
+
+  Pro: https://duolakit.gumroad.com/l/openapi-guardian
+  Activate: /openapi-activate <license-key>
+```

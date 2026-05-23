@@ -1,0 +1,23 @@
+{
+  "name": "openapi-guardian-fastify-demo",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Pro-tier demo for duolakit/openapi-guardian. Fastify variant of the Express demo — same spec, same intentional drift on DELETE /users/{id}.",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch server.ts",
+    "start": "tsx server.ts",
+    "api:types": "openapi-typescript openapi.yaml -o types/api.d.ts",
+    "api:check": "echo 'Open Claude Code, /openapi-activate <key>, then /openapi-check'",
+    "api:sync":  "echo 'Open Claude Code, /openapi-activate <key>, then /openapi-sync'"
+  },
+  "dependencies": {
+    "fastify": "^5.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "openapi-typescript": "^7.4.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.6.0"
+  }
+}

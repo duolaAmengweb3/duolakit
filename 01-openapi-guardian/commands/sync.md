@@ -94,20 +94,36 @@ If you find a conflict (e.g. spec says `email: string`, handler validates `email
 
 2. Document the resolution in the commit message.
 
-## Free vs Pro
+## Free vs Pro — enforced via license check
 
-- **Free**: Express + single service.
-- **Pro**: Fastify + Hono + NestJS + multi-service.
+**Before doing any Pro-tier work** (writing handlers for Fastify/Hono/NestJS, or scanning multiple specs in a multi-service repo), shell out to:
 
-If user has e.g. Fastify routes (detected by `import { FastifyInstance }` pattern), gracefully degrade:
+```bash
+bash ${CLAUDE_PLUGIN_ROOT}/bin/license.sh check
+```
+
+If exit code is `0` → Pro is active, all framework support available.
+If exit code is `1` → Free tier, restrict to Express + single spec.
+
+| Tier | Frameworks | Spec count |
+|---|---|---|
+| Free | Express only | 1 spec file |
+| Pro  | Express + Fastify + Hono + NestJS | unlimited (multi-service registry) |
+
+When you encounter a non-Express framework on Free tier, gracefully degrade:
 
 ```
 ⚠ openapi-guardian Free supports Express only.
   Detected Fastify in src/routes/*.ts — skipping these handlers.
-  Pro unlocks Fastify + Hono + NestJS — see https://duolakit.pages.dev#pricing
+
+  Pro unlocks Fastify + Hono + NestJS:
+    Buy:      https://duolakit.gumroad.com/l/openapi-guardian  ($19 one-time)
+    Activate: /openapi-activate <license-key>
 ```
 
 Continue with Express files. Don't crash.
+
+When the user has multiple `openapi.yaml` files (e.g., `services/auth/openapi.yaml`, `services/billing/openapi.yaml`), check the license. Free tier picks the first one and warns; Pro processes all of them.
 
 ## Safety rules
 

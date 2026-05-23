@@ -208,11 +208,11 @@ curl -X POST https://api.gumroad.com/v2/licenses/verify \
 
 返回 JSON 含 `success: true` + 用户邮箱 → 写入 `~/.duolakit/license.json` 缓存（不需要每次都调网络）。
 
-**实现方式**（v0.2 版本会加，v0.1 先跑通免费版）：
+**实现方式**（v1.0 已实装）：
 
-- Plugin 内加一个 `/duolakit-activate <key>` slash command
-- 写一个 shell 脚本调 Gumroad API
-- 验证通过 → 写本地缓存
-- 其他 command 启动时读缓存判断 Free vs Pro
-
-v0.1 alpha 阶段：**Pro 功能直接锁着**，等 Gumroad 上架后下个版本（v0.2）解锁。
+- 每个 plugin 自带 `/<plugin>-activate <key>` slash command（`/openapi-activate` / `/token-activate` / `/prd-activate`）
+- `bin/license.sh` 调 Gumroad `/v2/licenses/verify` 真校验
+- 写入 `~/.duolakit/licenses.json`（一个文件管多个 plugin 的 slot）
+- Pro command 启动时调 `bash ${CLAUDE_PLUGIN_ROOT}/bin/license.sh check` 真硬门控，非 0 直接拒绝
+- API key 自动 mask（`lin_...34`），从不出现在任何日志
+- 上架后只需把 `GUMROAD_PRODUCT_ID="PLACEHOLDER_REPLACE_AT_GUMROAD_LAUNCH"` 替换成 Gumroad 给的真实 id 即可

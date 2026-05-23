@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1a0b2e"/>
+      <stop offset="50%" stop-color="#4c1d95"/>
+      <stop offset="100%" stop-color="#831843"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#a78bfa"/>
+      <stop offset="100%" stop-color="#f9a8d4"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1280" height="720" fill="url(#bg)"/>
+
+  <g opacity="0.07" stroke="#ffffff" stroke-width="1" fill="none">
+    <path d="M0 180 L1280 180"/>
+    <path d="M0 360 L1280 360"/>
+    <path d="M0 540 L1280 540"/>
+    <path d="M320 0 L320 720"/>
+    <path d="M640 0 L640 720"/>
+    <path d="M960 0 L960 720"/>
+  </g>
+
+  <g font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace" fill="#ffffff">
+    <text x="80" y="110" font-size="26" opacity="0.65" letter-spacing="4">duolakit · plugin 01</text>
+    <text x="80" y="240" font-size="104" font-weight="700">OpenAPI</text>
+    <text x="80" y="350" font-size="104" font-weight="700" fill="url(#accent)">Guardian</text>
+    <text x="80" y="410" font-size="30" opacity="0.85">for Claude Code · $19 lifetime</text>
+  </g>
+
+  <g transform="translate(80,490)" font-family="'JetBrains Mono','SF Mono',Menlo,monospace" fill="#ffffff">
+    <g stroke="#a78bfa" stroke-width="2" fill="none">
+      <rect x="0"   y="0"  width="170" height="60" rx="8"/>
+      <rect x="280" y="0"  width="170" height="60" rx="8"/>
+      <rect x="0"   y="100" width="170" height="60" rx="8"/>
+      <rect x="280" y="100" width="170" height="60" rx="8"/>
+      <line x1="170" y1="30"  x2="280" y2="30"  marker-end="url(#arr)"/>
+      <line x1="170" y1="130" x2="280" y2="130" marker-end="url(#arr)"/>
+      <line x1="85"  y1="60"  x2="85"  y2="100" marker-end="url(#arr)"/>
+      <line x1="365" y1="60"  x2="365" y2="100" marker-end="url(#arr)"/>
+    </g>
+    <text x="85"  y="38"  font-size="22" text-anchor="middle">spec</text>
+    <text x="365" y="38"  font-size="22" text-anchor="middle">routes</text>
+    <text x="85"  y="138" font-size="22" text-anchor="middle">types</text>
+    <text x="365" y="138" font-size="22" text-anchor="middle">sdk</text>
+  </g>
+
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#a78bfa"/>
+    </marker>
+  </defs>
+
+  <text x="80" y="690" font-family="'JetBrains Mono','SF Mono',Menlo,monospace" font-size="22" fill="#fbcfe8" opacity="0.9">change one place · four others auto-sync</text>
+
+  <text x="1200" y="680" font-family="'JetBrains Mono','SF Mono',Menlo,monospace" font-size="22" fill="#ffffff" opacity="0.55" text-anchor="end">duolakit.pages.dev</text>
+
+  <g transform="translate(1080,100)">
+    <circle cx="60" cy="60" r="55" fill="none" stroke="url(#accent)" stroke-width="3"/>
+    <text x="60" y="82" font-family="'JetBrains Mono','SF Mono',Menlo,monospace" font-size="64" fill="#ffffff" text-anchor="middle">∞</text>
+  </g>
+</svg>

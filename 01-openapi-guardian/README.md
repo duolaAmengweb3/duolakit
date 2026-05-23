@@ -37,11 +37,12 @@ Forget one and prod breaks. Remember all four and waste 30 minutes per change.
 
 ### Commands
 
-| Command | What it does | Modifies files? |
+| Command | What it does | Tier |
 |---|---|---|
-| `/openapi-check` | Detect drift between spec / routes / types / SDK | ❌ Read-only |
-| `/openapi-sync`  | Bring all 4 into agreement (asks before each write) | ✅ Yes |
-| `/openapi-init`  | Bootstrap a new project (Express + OpenAPI scaffolding) | ✅ Yes |
+| `/openapi-check` | Detect drift between spec / routes / types / SDK | Free |
+| `/openapi-sync`  | Bring all 4 into agreement (asks before each write) | Free (Express) / Pro (Fastify+Hono+NestJS) |
+| `/openapi-init`  | Bootstrap a new project (Express + OpenAPI scaffolding) | Free |
+| `/openapi-activate <key>` | Verify Gumroad license, unlock Pro framework + multi-service | n/a |
 
 ### Try the demo in 5 minutes
 
@@ -98,14 +99,22 @@ A PreToolUse hook fires when you edit `openapi.yaml` to remind you to run `/open
 
 14-day no-questions-asked refund. Email `noreply@duolakit.pages.dev` or DM [@hunterweb303](https://x.com/hunterweb303).
 
-### Roadmap
+### What's in v1.0 (today)
 
-- v0.1 (now) · Express + free `check` / `sync` / `init`
-- v0.2 · Fastify support (Pro)
-- v0.3 · Hono + NestJS (Pro)
-- v0.4 · Multi-service registry (Pro)
-- v0.5 · Watch mode (auto-trigger on file save)
-- v0.6 · CI integration (GitHub Action wrapper)
+- `/openapi-check`, `/openapi-sync`, `/openapi-init` (Free + Pro behavior gated by `bin/license.sh`)
+- Express + Fastify framework support shipping (Hono + NestJS use the same code paths — Claude follows your framework's conventions via the skill)
+- Multi-service registry (Pro): scan multiple `openapi.yaml` files in one repo
+- `prd-reviewer` style second-opinion sub-agent for diffs > 50 lines
+- PreToolUse hook nudge when editing the spec
+- Express + Fastify runnable demo projects with intentional drift
+- `/openapi-activate <license-key>` actually verifies against Gumroad
+
+### What's next (not in v1.0)
+
+- Hono + NestJS dedicated demos (the code paths already work — these add reference projects)
+- Watch mode (auto-trigger `/openapi-sync` on spec save)
+- CI integration (GitHub Action wrapper for headless drift detection)
+- Reverse mode: code-to-spec with hand-curated diff approval
 
 ### Anti-features (things this plugin will NOT do)
 
@@ -147,11 +156,12 @@ A PreToolUse hook fires when you edit `openapi.yaml` to remind you to run `/open
 
 ### 命令
 
-| 命令 | 作用 | 改文件吗 |
+| 命令 | 作用 | 等级 |
 |---|---|---|
-| `/openapi-check` | 检测 spec / routes / types / SDK 之间的漂移 | ❌ 只读 |
-| `/openapi-sync`  | 同步 4 处（每次写文件前会问你确认） | ✅ 会 |
-| `/openapi-init`  | 在新项目里初始化 Express + OpenAPI 脚手架 | ✅ 会 |
+| `/openapi-check` | 检测 spec / routes / types / SDK 之间的漂移 | 免费 |
+| `/openapi-sync`  | 同步 4 处（每次写文件前会问你确认） | 免费 Express / Pro 多框架 |
+| `/openapi-init`  | 在新项目里初始化 Express + OpenAPI 脚手架 | 免费 |
+| `/openapi-activate <key>` | 校验 Gumroad license，解锁 Pro 多框架 + 多服务 | — |
 
 ### 5 分钟试 demo
 
@@ -208,14 +218,22 @@ npm run dev      # 启动服务 :3000
 
 14 天无理由退款。邮件 `noreply@duolakit.pages.dev` 或私信 [@hunterweb303](https://x.com/hunterweb303)。
 
-### 路线图
+### v1.0 已经发的（今天）
 
-- v0.1（现在）· Express + 免费版 `check` / `sync` / `init`
-- v0.2 · Fastify 支持（Pro）
-- v0.3 · Hono + NestJS（Pro）
-- v0.4 · 多服务 registry（Pro）
-- v0.5 · Watch 模式（文件保存时自动触发）
-- v0.6 · CI 集成（GitHub Action 包装）
+- `/openapi-check`、`/openapi-sync`、`/openapi-init`（免费 + Pro 行为由 `bin/license.sh` 真硬门控）
+- Express + Fastify 框架支持已上（Hono + NestJS 走同一套代码路径——skill 让 Claude 跟你框架的惯例走）
+- 多服务 registry（Pro）：扫一个 repo 里多个 `openapi.yaml`
+- diff > 50 行自动调起 `prd-reviewer` 风格的第二意见子 agent
+- 编辑 spec 时 PreToolUse hook 弹提醒
+- Express + Fastify 双 demo 项目，都带故意漂移
+- `/openapi-activate <license-key>` 真调 Gumroad 校验
+
+### 下一步（不在 v1.0）
+
+- Hono + NestJS 的专属 demo 项目（代码路径已通，这是补参考工程）
+- Watch 模式（spec 保存时自动触发 `/openapi-sync`）
+- CI 集成（GitHub Action 包装的无人值守漂移检测）
+- 反向模式：code-to-spec，人工核对 diff 再批
 
 ### 不会做的事
 
