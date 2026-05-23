@@ -1,0 +1,11 @@
+name = "duolakit-license"
+main = "src/index.ts"
+compatibility_date = "2025-01-01"
+
+# KV namespace binding. The id is filled in after `wrangler kv namespace create LICENSES`.
+[[kv_namespaces]]
+binding = "LICENSES"
+id = "4342b826953b4576b1a71860aa1e5d66"
+
+# Secret (set via `wrangler secret put PING_SECRET`, NOT in this file):
+#   PING_SECRET — random 32-byte hex string. Gumroad ping URL includes ?secret=<this>

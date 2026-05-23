@@ -1,58 +1,67 @@
 ---
 name: openapi-activate
-description: Activate the Pro tier for openapi-guardian using your Gumroad license key. Stored locally at ~/.duolakit/licenses.json. No telemetry.
-argument-hint: "<license-key>  (from Gumroad receipt email)"
+description: Activate the Pro tier for openapi-guardian using the email you used at Gumroad checkout. Verified in real-time against the duolakit-license Worker. Stored locally at ~/.duolakit/licenses.json. No telemetry.
+argument-hint: "<email-you-used-at-gumroad-checkout>"
 ---
 
 # /openapi-activate
 
 You are running the `openapi-activate` command from the `openapi-guardian` plugin.
 
-Your task: take the license key the user gave you, verify it against Gumroad's License API by shelling out to `${CLAUDE_PLUGIN_ROOT}/bin/license.sh`, and report success or failure.
+Your task: take the email the user gave you, verify against the duolakit-license Cloudflare Worker (which is fed by Gumroad's purchase webhook in real-time), and report success or failure.
+
+## How activation works (so you can explain if asked)
+
+1. Buyer purchases on Gumroad (`hunterweb303.gumroad.com/l/openapi-guardian`).
+2. Within seconds, Gumroad pings `duolakit-license.hxu92521.workers.dev/ping`.
+3. The Worker writes the buyer's email to Cloudflare KV.
+4. The buyer runs `/openapi-activate <their-email>`.
+5. This script GETs `/verify?plugin=openapi-guardian&email=<email>`.
+6. If the email is in KV → success → write `~/.duolakit/licenses.json` and unlock Pro.
+
+End-to-end latency from purchase to activation: typically < 30 seconds.
 
 ## Procedure
 
-1. **Parse the key.**
-   - The key is the first argument. Expected shape: 4 groups of 4 alphanumeric chars separated by `-`, e.g. `ABCD-1234-EFGH-5678`. Be lenient — Gumroad has changed the format historically.
-   - If no key was passed, print:
-     ```
-     usage: /openapi-activate <license-key>
+1. **Parse the email.** First argument. If missing, print usage:
+   ```
+   usage: /openapi-activate <email-you-used-at-gumroad-checkout>
 
-     The key arrives in your Gumroad receipt email after purchase.
-     Buy: https://duolakit.gumroad.com/l/openapi-guardian
-     ```
-     and stop.
+   The email is in your Gumroad receipt. It's the address you typed at checkout.
+   Buy: https://hunterweb303.gumroad.com/l/openapi-guardian
+   ```
+   and stop.
 
-2. **Verify.** Run:
+2. **Verify via the Worker.** Run:
    ```bash
-   bash ${CLAUDE_PLUGIN_ROOT}/bin/license.sh activate <key>
+   bash ${CLAUDE_PLUGIN_ROOT}/bin/license.sh activate <email>
    ```
 
 3. **Interpret the exit code.**
-   - `0` → success. The key was accepted and `~/.duolakit/licenses.json` now has a slot for `openapi-guardian` with `valid: true`. Print:
+   - `0` → success. Print:
      ```
-     ✓ Pro activated for openapi-guardian.
+     ✓ Pro activated for openapi-guardian (<email>)
 
      You now have:
        - Multi-spec registry (multiple openapi.yaml in one repo)
+       - Express + Fastify + Hono + NestJS support
        - Reviewer sub-agent on diffs > 50 lines
        - 48h email support: noreply@duolakit.pages.dev
 
-     The activation is local to this machine. Re-run /openapi-activate <key>
-     on each device you use. The key works on unlimited personal devices.
+     Activation is local to this machine. Re-run /openapi-activate <email>
+     on each device. The email works on unlimited personal devices.
      ```
-   - `3` → Gumroad rejected the key. Print the error message the script returned. Common cases:
-     - "That license does not exist for the product" → key typo or wrong product
-     - "Product not yet listed on Gumroad" → we haven't shipped the listing yet
-     - "license refunded / chargebacked / disputed" → tell user to contact support
-   - `2` → script usage error. Shouldn't happen if step 1 validated, but if it does, print the script's stderr.
+   - `3` → email not on the buyers list. Print the script's stderr verbatim — it already explains the common causes (recent purchase still in flight, email mismatch, refunded).
+   - `4` → email format invalid. Tell user to double-check.
+   - `5` → network error reaching the Worker. Suggest retry + checking internet.
+   - `2` → script usage error. Shouldn't happen if step 1 validated.
 
 4. **Privacy note** (always print at the end of a successful activation):
 
-   > Stored at `~/.duolakit/licenses.json`. This file contains your license key
-   > and the email address Gumroad has on file. It never leaves your machine
-   > except when the plugin re-verifies with Gumroad (re-verification triggers
-   > automatically every 30 days during normal use).
+   > Stored at `~/.duolakit/licenses.json`. The file contains only your
+   > email and a timestamp. It never leaves your machine. The Worker
+   > knows you bought (it has to, to verify) but doesn't track your
+   > usage of the plugin afterward.
 
 ## How to deactivate
 
@@ -60,19 +69,20 @@ Your task: take the license key the user gave you, verify it against Gumroad's L
 bash ${CLAUDE_PLUGIN_ROOT}/bin/license.sh deactivate
 ```
 
-This removes only the `openapi-guardian` slot from `~/.duolakit/licenses.json`. Other duolakit plugin licenses are untouched.
+Removes only the `openapi-guardian` slot from `~/.duolakit/licenses.json`. Other duolakit plugin licenses are untouched. Refunds and disputes are auto-handled by the Worker — within seconds of the Gumroad refund webhook, the email is removed from KV and subsequent `check` calls will fail.
 
 ## What you must NOT do
 
-- Don't echo the license key after activation — the user already has it in their email.
-- Don't try to verify the key against any URL other than `api.gumroad.com`.
-- Don't store the key in any file outside `~/.duolakit/`.
+- Don't echo the email after activation — already in the user's receipt.
+- Don't try to verify against any URL other than the configured `DUOLAKIT_VERIFY_URL` (or its default).
+- Don't store anything outside `~/.duolakit/`.
 - Don't pretend Pro is active if the script returned non-zero.
 
 ## Mock modes (for testing)
 
-Internally, `bin/license.sh` supports:
-- `--mock-success activate <key>` → pretends Gumroad said valid
-- `--mock-failure activate <key>` → pretends Gumroad said invalid
+`bin/license.sh` supports:
+- `--mock-success activate <email>` → pretends the Worker said valid
+- `--mock-failure activate <email>` → pretends the Worker said invalid
+- `DUOLAKIT_VERIFY_URL=http://localhost:8787/verify` → override Worker URL
 
-These are for `examples/smoke-test.sh` and never invoked by this slash command.
+These are for `tests/run-all.sh` and `examples/smoke-test.sh`. Never invoked by this slash command in normal use.

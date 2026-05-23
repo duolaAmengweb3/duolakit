@@ -1,0 +1,89 @@
+Token Guardian for Claude Code — Pro v1.0
+═══════════════════════════════════════════════════════════════
+
+Thanks for buying!
+
+───────────────────────────────────────────────────────────────
+ACTIVATION (use your purchase email — no license key needed)
+───────────────────────────────────────────────────────────────
+
+Activation is by the email you typed at Gumroad checkout. It's the
+email this very file was delivered to.
+
+Open Claude Code in any project, then:
+
+  /plugin marketplace add duolaAmengweb3/duolakit
+  /plugin install token-guardian@duolakit
+  /token-activate your-purchase-email@example.com
+
+You should see: "✓ Pro activated for token-guardian (your-email)"
+
+Your activation works on unlimited personal devices. Re-run
+/token-activate on each machine — it takes ~3 seconds.
+
+How it works: Gumroad pings our verification server within seconds
+of your purchase. Refunds are auto-handled.
+
+───────────────────────────────────────────────────────────────
+USE IT
+───────────────────────────────────────────────────────────────
+
+The PreToolUse hook starts logging immediately — no command needed.
+After a few minutes of Claude Code activity, try:
+
+  /token-status          # show estimated usage + pace + ETA
+  /token-budget show     # see your 5h / daily thresholds
+  /token-budget set 5h 220000   # adjust to match your real limit
+
+Pro features (now unlocked):
+
+  /token-route           # recommend OpenRouter fallback for next task
+  /token-calibrate       # paste /cost output, persist a calibrated multiplier
+                         # (Free is session-only; Pro persists + 7-day history)
+
+When you cross the warn threshold (default 80%), the hook emits a
+one-time stderr message in your Claude Code session. You don't
+need to poll — it'll find you.
+
+───────────────────────────────────────────────────────────────
+WHAT YOU UNLOCKED (vs free tier)
+───────────────────────────────────────────────────────────────
+
+✓ /token-route — full multi-provider routing matrix + sub-agent
+✓ /token-calibrate — persistent across sessions + 7-day history
+✓ OpenRouter env/settings snippet auto-generation
+✓ 48h email support: noreply@duolakit.pages.dev
+
+───────────────────────────────────────────────────────────────
+HONEST DISCLAIMER
+───────────────────────────────────────────────────────────────
+
+Anthropic doesn't expose precise token counts to plugins. The
+heuristic is `input_chars / 4 + per-tool baseline`. It's typically
+30-50% under Claude Code's own /cost. Use /token-calibrate to
+close that gap with your real /cost output.
+
+This is an alarm clock, not a stopwatch.
+
+───────────────────────────────────────────────────────────────
+LINKS
+───────────────────────────────────────────────────────────────
+
+  Source:     https://github.com/duolaAmengweb3/duolakit/tree/main/02-token-guardian
+  Marketplace: https://duolakit.pages.dev
+  Issues:     https://github.com/duolaAmengweb3/duolakit/issues
+  Author:     https://x.com/hunterweb303
+  Telegram:   https://t.me/dsa885
+
+───────────────────────────────────────────────────────────────
+REFUND
+───────────────────────────────────────────────────────────────
+
+14 days, no questions asked. Reply to the Gumroad receipt email
+or DM @hunterweb303 on X. Refunds are reflected in /token-activate
+within ~10 seconds — the email is auto-removed from the buyers list.
+
+───────────────────────────────────────────────────────────────
+
+Built by duola. Same author as mimo-tui (https://mimo-tui.pages.dev)
+and the other duolakit plugins (openapi-guardian, prd-splitter).

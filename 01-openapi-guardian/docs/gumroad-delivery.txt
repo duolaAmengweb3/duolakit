@@ -1,0 +1,77 @@
+OpenAPI Guardian for Claude Code — Pro v1.0
+═══════════════════════════════════════════════════════════════
+
+Thanks for buying!
+
+───────────────────────────────────────────────────────────────
+ACTIVATION (use your purchase email — no license key needed)
+───────────────────────────────────────────────────────────────
+
+Activation is by the email you typed at Gumroad checkout. It's the
+email this very file was delivered to.
+
+Open Claude Code in any project, then:
+
+  /plugin marketplace add duolaAmengweb3/duolakit
+  /plugin install openapi-guardian@duolakit
+  /openapi-activate your-purchase-email@example.com
+
+You should see: "✓ Pro activated for openapi-guardian (your-email)"
+
+Your activation works on unlimited personal devices. Re-run
+/openapi-activate on each machine — it takes ~3 seconds.
+
+How it works: Gumroad pings our verification server within seconds
+of your purchase. The server checks your email against the buyers
+list at activation time. Refunds are auto-handled.
+
+───────────────────────────────────────────────────────────────
+USE IT
+───────────────────────────────────────────────────────────────
+
+  /openapi-check          # detect drift (read-only)
+  /openapi-sync           # auto-fix (asks before each write)
+  /openapi-init           # bootstrap a new Express + OpenAPI project
+
+Try the demo (clone the repo, then):
+  cd duolakit/01-openapi-guardian/examples/express-demo
+  npm install
+  npm run dev
+
+Then in Claude Code, /openapi-check will find the intentional
+DELETE /users/{id} drift. /openapi-sync will fix it.
+
+A Fastify variant is at examples/fastify-demo/ — same drift,
+proves the Pro framework support works.
+
+───────────────────────────────────────────────────────────────
+WHAT YOU UNLOCKED (vs free tier)
+───────────────────────────────────────────────────────────────
+
+✓ Fastify + Hono + NestJS framework support (free is Express-only)
+✓ Multi-service registry — scan multiple openapi.yaml in one repo
+✓ Reviewer sub-agent on diffs > 50 lines
+✓ 48h email support: noreply@duolakit.pages.dev
+
+───────────────────────────────────────────────────────────────
+LINKS
+───────────────────────────────────────────────────────────────
+
+  Source:     https://github.com/duolaAmengweb3/duolakit/tree/main/01-openapi-guardian
+  Marketplace: https://duolakit.pages.dev
+  Issues:     https://github.com/duolaAmengweb3/duolakit/issues
+  Author:     https://x.com/hunterweb303
+  Telegram:   https://t.me/dsa885
+
+───────────────────────────────────────────────────────────────
+REFUND
+───────────────────────────────────────────────────────────────
+
+14 days, no questions asked. Reply to the Gumroad receipt email
+or DM @hunterweb303 on X. Refunds are reflected in /openapi-activate
+within ~10 seconds — the email is auto-removed from the buyers list.
+
+───────────────────────────────────────────────────────────────
+
+Built by duola. Same author as mimo-tui (https://mimo-tui.pages.dev)
+and the other duolakit plugins (token-guardian, prd-splitter).

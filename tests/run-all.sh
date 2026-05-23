@@ -155,25 +155,24 @@ for sku in 01-openapi-guardian 02-token-guardian 03-prd-splitter; do
   fi
 done
 
-# Activate each via --mock-success, then check should succeed.
+# Activate each via --mock-success (skips Worker network call), then check should succeed.
 for sku in 01-openapi-guardian 02-token-guardian 03-prd-splitter; do
-  bash $sku/bin/license.sh --mock-success activate "TEST-KEY-$sku" > /tmp/license-activate.out 2>&1
+  bash $sku/bin/license.sh --mock-success activate "mock-$sku@example.com" > /tmp/license-activate.out 2>&1
   rc=0; bash $sku/bin/license.sh check || rc=$?
   if [ "${rc}" = "0" ]; then ok "$sku: check after mock-success activate → exit 0"; else bad "$sku: post-activate check expected 0 got ${rc}"; fi
 done
 
-# Activate with --mock-failure should not flip the slot (already valid from above), but should report exit 3.
-rc=0; bash 01-openapi-guardian/bin/license.sh --mock-failure activate BAD > /dev/null 2>&1 || rc=$?
+# --mock-failure should refuse with exit 3.
+rc=0; bash 01-openapi-guardian/bin/license.sh --mock-failure activate any@example.com > /dev/null 2>&1 || rc=$?
 if [ "${rc}" = "3" ]; then ok "mock-failure activate → exit 3"; else bad "mock-failure expected 3 got ${rc}"; fi
 
-# Real activate with placeholder product_id should refuse with exit 3 + clear message.
-out=$(bash 01-openapi-guardian/bin/license.sh activate ANY-KEY 2>&1)
-rc=$?
-if [ "${rc}" = "3" ] && echo "${out}" | grep -q "not yet listed"; then
-  ok "real activate with placeholder product_id → exit 3 with explanatory msg"
-else
-  bad "real activate placeholder behavior wrong (rc=${rc}, out=${out})"
-fi
+# Invalid email format should refuse with exit 4 (before any network call).
+rc=0; bash 01-openapi-guardian/bin/license.sh activate "not-an-email" > /dev/null 2>&1 || rc=$?
+if [ "${rc}" = "4" ]; then ok "invalid email format → exit 4"; else bad "invalid email expected 4 got ${rc}"; fi
+
+# Missing email argument should refuse with exit 2.
+rc=0; bash 01-openapi-guardian/bin/license.sh activate > /dev/null 2>&1 || rc=$?
+if [ "${rc}" = "2" ]; then ok "missing email arg → exit 2"; else bad "missing email expected 2 got ${rc}"; fi
 
 # Deactivate clears the slot.
 bash 01-openapi-guardian/bin/license.sh deactivate > /dev/null
@@ -186,6 +185,15 @@ if [ "${remaining}" = "prd-splitter,token-guardian" ]; then
   ok "shared licenses.json kept other plugins' slots intact"
 else
   bad "shared licenses.json corrupted; expected prd-splitter,token-guardian got '${remaining}'"
+fi
+
+# Live Worker reachability (skipped if --no-network is set, network failure is just warned)
+WORKER_URL="${DUOLAKIT_VERIFY_URL:-https://duolakit-license.hxu92521.workers.dev/verify}"
+HEALTH_URL="${WORKER_URL%/verify}/"
+if curl -sS --max-time 8 -f -o /dev/null "${HEALTH_URL}"; then
+  ok "live Worker /health reachable at ${HEALTH_URL}"
+else
+  echo "  · skip: live Worker /health unreachable (${HEALTH_URL}) — not failing the suite"
 fi
 
 rm -rf "${HOME}/.duolakit"

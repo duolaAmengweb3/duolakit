@@ -1,0 +1,99 @@
+PRD Splitter for Claude Code — Pro v1.0
+═══════════════════════════════════════════════════════════════
+
+Thanks for buying!
+
+───────────────────────────────────────────────────────────────
+ACTIVATION (use your purchase email — no license key needed)
+───────────────────────────────────────────────────────────────
+
+Activation is by the email you typed at Gumroad checkout. It's the
+email this very file was delivered to.
+
+Open Claude Code in any project, then:
+
+  /plugin marketplace add duolaAmengweb3/duolakit
+  /plugin install prd-splitter@duolakit
+  /prd-activate your-purchase-email@example.com
+
+You should see: "✓ Pro activated for prd-splitter (your-email)"
+
+Your activation works on unlimited personal devices. Re-run
+/prd-activate on each machine — it takes ~3 seconds.
+
+How it works: Gumroad pings our verification server within seconds
+of your purchase. Refunds are auto-handled.
+
+───────────────────────────────────────────────────────────────
+USE IT
+───────────────────────────────────────────────────────────────
+
+In a project with a PRD (typically PRD.md), run:
+
+  /prd-split             # parse PRD → epic/story/task tree → PRD-tree.md
+  /prd-estimate          # add Fibonacci points (1, 2, 3, 5, 8, 13 only)
+  /prd-export linear     # produce PRD-tree.linear.csv
+
+Pro features (now unlocked):
+
+  /prd-push linear       # direct GraphQL push to Linear (always dry-runs first)
+  /prd-push linear --no-dry-run    # actually create issues, idempotent
+
+Requires LINEAR_API_KEY in your env. Get one at:
+  https://linear.app/settings/api
+
+Also unlocked: prd-reviewer sub-agent auto-fires on 8+ point stories,
+gives a second opinion (confirm / downgrade / propose clean split).
+
+Try the demo:
+  Clone the repo, then:
+    cd duolakit/03-prd-splitter/examples
+    bash smoke-test.sh    # 20 assertions, all should pass
+
+Then in Claude Code (cd into examples/, then):
+  /prd-split sample-prd.md
+  /prd-estimate
+
+───────────────────────────────────────────────────────────────
+WHAT YOU UNLOCKED (vs free tier)
+───────────────────────────────────────────────────────────────
+
+✓ /prd-push linear — direct GraphQL push (no CSV detour)
+✓ prd-reviewer sub-agent on 8+ point stories
+✓ Persistent per-project estimation calibration
+✓ 48h email support: noreply@duolakit.pages.dev
+
+Idempotency: re-running /prd-push for the same PRD updates existing
+issues rather than creating duplicates. Tracked in
+~/.duolakit/prd-splitter-mapping.json.
+
+───────────────────────────────────────────────────────────────
+SAFETY
+───────────────────────────────────────────────────────────────
+
+- LINEAR_API_KEY is read from env on every call, never written to disk.
+- Default behavior is dry-run; you must add --no-dry-run to actually push.
+- > 50 issues in one push requires a second explicit confirmation.
+
+───────────────────────────────────────────────────────────────
+LINKS
+───────────────────────────────────────────────────────────────
+
+  Source:     https://github.com/duolaAmengweb3/duolakit/tree/main/03-prd-splitter
+  Marketplace: https://duolakit.pages.dev
+  Issues:     https://github.com/duolaAmengweb3/duolakit/issues
+  Author:     https://x.com/hunterweb303
+  Telegram:   https://t.me/dsa885
+
+───────────────────────────────────────────────────────────────
+REFUND
+───────────────────────────────────────────────────────────────
+
+14 days, no questions asked. Reply to the Gumroad receipt email
+or DM @hunterweb303 on X. Refunds are reflected in /prd-activate
+within ~10 seconds — the email is auto-removed from the buyers list.
+
+───────────────────────────────────────────────────────────────
+
+Built by duola. Same author as mimo-tui (https://mimo-tui.pages.dev)
+and the other duolakit plugins (openapi-guardian, token-guardian).

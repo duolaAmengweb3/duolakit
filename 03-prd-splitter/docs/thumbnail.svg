@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1a0b2e"/>
+      <stop offset="50%" stop-color="#4c1d95"/>
+      <stop offset="100%" stop-color="#831843"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#a78bfa"/>
+      <stop offset="100%" stop-color="#f9a8d4"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="600" fill="url(#bg)"/>
+  <g opacity="0.08" stroke="#ffffff" stroke-width="1" fill="none">
+    <path d="M0 150 L600 150"/><path d="M0 300 L600 300"/><path d="M0 450 L600 450"/>
+    <path d="M150 0 L150 600"/><path d="M300 0 L300 600"/><path d="M450 0 L450 600"/>
+  </g>
+  <g transform="translate(300,200)">
+    <circle cx="0" cy="0" r="100" fill="none" stroke="url(#accent)" stroke-width="4"/>
+    <text x="0" y="40" font-family="'JetBrains Mono','SF Mono',Menlo,monospace" font-size="140" fill="#ffffff" text-anchor="middle">∞</text>
+  </g>
+  <g font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace" fill="#ffffff" text-anchor="middle">
+    <text x="300" y="400" font-size="62" font-weight="700">PRD</text>
+    <text x="300" y="465" font-size="46" font-weight="700" fill="url(#accent)">Splitter</text>
+    <text x="300" y="515" font-size="22" opacity="0.7">duolakit · $19</text>
+  </g>
+</svg>
